@@ -30,3 +30,9 @@ Some special RDGs are not easy to generate in an automatible fashion, but can be
 Describes how to generate the RDG manually if it is not feasible to generate or migrate it.
 If this RDG cannot be created by any of the above scripts, the steps to create it must be described in detail here.
 If this is a special RDG, created to cover a specific test case, describe how it is special and the test case(s) here. 
+
+
+### Requirements of the conditional scripts
+- the "main" function must be called uprev to be found by the global uprev script
+- the uprev function must return the path to where the new rdg can be found
+- the scripts must keep the organization outlined above
