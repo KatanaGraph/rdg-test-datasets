@@ -68,6 +68,8 @@ def cli():
 
     to validate that all rdgs have a specific storage_format_version:
     uprev validate --storage_format_version=3
+
+    either can be passed the --continue_on_failure flag to skip over failures for individual rdgs
     """
 
 
