@@ -32,7 +32,15 @@ If this RDG cannot be created by any of the above scripts, the steps to create i
 If this is a special RDG, created to cover a specific test case, describe how it is special and the test case(s) here. 
 
 
-### Requirements of the conditional scripts
+## Requirements of the conditional scripts
 - the "main" function must be called uprev to be found by the global uprev script
 - the uprev function must return the path to where the new rdg can be found
 - the scripts must keep the organization outlined above
+
+
+## How to uprev the rdgs in this repo
+1) ensure the most recent master commit of this repo is checked out: `git checkout master; git pull`
+2) run `./uprev` to see the up to date options
+3) ensure `./uprev validate` passes for all rdgs
+4) make a new commit with the message `upreved rdgs to storage_format_version_M`
+5) create a katana repo PR to bump up the version of this submodule
