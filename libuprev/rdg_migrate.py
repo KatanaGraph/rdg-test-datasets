@@ -29,14 +29,15 @@ def migrate(config: Config, rdg_path: pathlib.Path, in_ver: int, out_ver: int) -
 
 
 def rdg_migrate_tool(config: Config, in_path: pathlib.Path, out_path: pathlib.Path):
+    tool_name = "uprev-rdg-storage-format-version-worker"
     tool_path = (
-        config.build_dir / "tools/uprev-rdg-storage-format-version-worker/uprev-rdg-storage-format-version-worker"
+        config.build_dir / "external/katana/tools/{0}/{0}".format(tool_name)
     )
     if tool_path == None:
-        raise RuntimeError("path to migration tool must not be empty")
+        raise RuntimeError("path to migration tool must not be empty, do you have a katana-enterprise build directory?")
     if not tool_path.is_file():
         raise RuntimeError(
-            "migration tool located at [{}] is not present, have you built it?".format(tool_path.absolute())
+            "migration tool located at [{}] is not present, have you built it?. Run 'make {}' in katana-enterprise".format(tool_path.absolute(), tool_name)
         )
 
     cmd = [tool_path, str(in_path.absolute()), str(out_path.absolute())]

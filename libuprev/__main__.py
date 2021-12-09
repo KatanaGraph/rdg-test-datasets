@@ -73,7 +73,7 @@ def cli():
     tooling to uprev the test dataset rdgs to the latest storage_format_version
 
     to uprev all rdgs:
-    uprev rdgs --storage_format_version=3 --build_dir="/home/user/katana/build"
+    uprev rdgs --storage_format_version=3 --build_dir="/home/user/katana-enterprise/build"
 
     to validate that all rdgs have a specific storage_format_version:
     uprev validate_rdgs --storage_format_version=3
@@ -87,7 +87,7 @@ def cli():
 
 @cli.command(name="rdgs")
 @click.option("--storage_format_version", type=int, required=True, help="storage_format_version to uprev rdgs to")
-@click.option("--build_dir", type=str, required=True, help="katana build directory")
+@click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
 @click.option(
     "--continue_on_failure", default=False, is_flag=True, help="Attempt to continue after exception", show_default=True
 )
@@ -96,6 +96,9 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
     config = Config()
 
     config.build_dir = pathlib.Path(build_dir)
+
+    if not config.build_dir.is_dir():
+        raise RuntimeError("build directory {} does not exist".format(config.build_dir))
 
     # mapping from the rdg that failed to the error received
     failed = {}
