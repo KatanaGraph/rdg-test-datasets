@@ -7,3 +7,5 @@ then from this directory run:
 
 1) `export NEW_VERSION=<new_storage_format_version>`
 2) `mpiexec -n 4 partition-dist --loadAllProperties --newRDG=$NEW_VERSION ../smiles_small/$NEW_VERSION` 
+
+TODO(emcginnis): make this a generate script

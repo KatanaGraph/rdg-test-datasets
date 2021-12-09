@@ -73,22 +73,26 @@ def cli():
     tooling to uprev the test dataset rdgs to the latest storage_format_version
 
     to uprev all rdgs:
-    uprev all --storage_format_version=3 --build_dir="/home/user/katana/build"
+    uprev rdgs --storage_format_version=3 --build_dir="/home/user/katana/build"
 
     to validate that all rdgs have a specific storage_format_version:
-    uprev validate --storage_format_version=3
+    uprev validate_rdgs --storage_format_version=3
 
-    either can be passed the --continue_on_failure flag to skip over failures for individual rdgs
+    the --continue_on_failure flag can be used to skip over failures for individual rdgs, providing a report at the end
+
+    --rdg=<rdg_name> or -R <rdg_name> can be passed to specify an rdg to work on
+    this flag can be passed multiple times
     """
 
 
-@cli.command(name="all")
+@cli.command(name="rdgs")
 @click.option("--storage_format_version", type=int, required=True, help="storage_format_version to uprev rdgs to")
 @click.option("--build_dir", type=str, required=True, help="katana build directory")
 @click.option(
     "--continue_on_failure", default=False, is_flag=True, help="Attempt to continue after exception", show_default=True
 )
-def cli_all(storage_format_version: int, build_dir: str, continue_on_failure: bool):
+@click.option("--rdg", "-R", "rdgs", type=str, multiple=True, help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'")
+def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: bool, rdgs: list[str]):
     config = Config()
 
     config.build_dir = pathlib.Path(build_dir)
@@ -101,6 +105,10 @@ def cli_all(storage_format_version: int, build_dir: str, continue_on_failure: bo
     uprev_success = {}
 
     for rdg, uprev_methods in rdg_datasets.available_uprev_methods().items():
+        # skip over rdg if we have been passed a list to work on, and this is not one of them
+        if (len(rdgs) > 0 and rdg not in rdgs):
+            continue
+
         if len(uprev_methods) == 0:
             must_manually_uprev.append(rdg)
             continue
@@ -144,22 +152,27 @@ def cli_all(storage_format_version: int, build_dir: str, continue_on_failure: bo
         print()
 
 
-@cli.command(name="validate")
+@cli.command(name="validate_rdgs")
 @click.option("--storage_format_version", type=int, required=True, help="storage_format_version to check")
 @click.option(
     "--continue_on_failure", default=False, is_flag=True, help="Attempt to continue after exception", show_default=True
 )
-def cli_validate(storage_format_version: int, continue_on_failure: bool):
+@click.option("--rdg", "-R", "rdgs", type=str, multiple=True, help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'")
+def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rdgs: list[str]):
 
     # mapping of the rdgs which were successfully validated, to its location
     validated_rdgs = {}
     # mapping from the rdg that failed to the error received
     failed = {}
-
-    rdgs = rdg_datasets.available_rdgs()
+    available_rdgs = rdg_datasets.available_rdgs()
 
     rdg_datasets_path = pathlib.Path(rdg_datasets.rdg_dataset_dir)
-    for rdg in rdgs:
+    for rdg in available_rdgs:
+
+        # skip over rdg if we have been passed a list to work on, and this is not one of them
+        if (len(rdgs) > 0 and rdg not in rdgs):
+            continue
+
         rdg_dir = rdg_datasets_path / rdg
         rdg_dir = rdg_dir / "storage_format_version_{}".format(storage_format_version)
         try:
@@ -187,10 +200,11 @@ def cli_validate(storage_format_version: int, continue_on_failure: bool):
             print("\t {} : {}".format(rdg, reason))
         print()
 
-    if len(validated_rdgs) != len(rdgs) and len(failed) == 0:
-        color.print_error("ERROR: not all rdgs were validated, but not failures were observed")
-        color.print_error("expected to validate: {}".format(rdgs))
-        color.print_error("but only validated: {}".format(validated_rdgs))
+    if len(failed) == 0:
+        if (len(rdgs) == 0 and len(validated_rdgs) != len(available_rdgs)) or (len(rdgs) != len(validated_rdgs)):
+            color.print_error("ERROR: not all available_rdgs were validated, but not failures were observed")
+            print("expected to validate: {}".format(available_rdgs))
+            print("but only validated: {}".format(validated_rdgs))
 
 
 if __name__ == "__main__":
