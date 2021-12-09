@@ -1,6 +1,6 @@
+import os
 import pathlib
 import subprocess
-import os
 
 from libuprev.uprev_config import Config
 from libuprev import fs
@@ -12,7 +12,8 @@ def import_(config: Config,
             csv_path: pathlib.Path,
             node_file: str,
             edge_file: str,
-            import_args: list[str]) -> pathlib.Path :
+            import_args: list[str]
+            ) -> pathlib.Path :
 
     out_path = rdg_path / "storage_format_version_{}".format(out_ver)
     node_file_path = csv_path / node_file
@@ -40,6 +41,7 @@ def import_tool(config: Config,
                 edge_file_path: pathlib.Path,
                 import_args: list[str],
                 aws_disabled: bool = True):
+
     tool_name = "csv-import"
     tool_path = (config.build_dir / "tools/import/{}".format(tool_name))
 

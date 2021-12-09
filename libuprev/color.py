@@ -19,3 +19,6 @@ def print_warn(string: str):
 
 def print_ok(string: str):
     print("{}{}{}".format(OKGREEN, string, ENDC))
+
+def print_header(string: str):
+    print("{}{}{}{}".format(HEADER, BOLD, string, ENDC))

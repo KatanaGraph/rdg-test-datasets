@@ -9,17 +9,12 @@ from libuprev import color
 from libuprev.uprev_config import Config
 from libuprev import fs
 
-
-# Try to uprev the rdg using the available methods in priority order
-# Returns path to upreved rdg
-def try_uprev(config: Config, rdg: str, storage_format_version: int, uprev_methods: dict) -> pathlib.Path:
+def get_method(rdg: str, uprev_methods: dict):
     # Uprev Method Priority Order:
     # 1) Import
     # 2) Generate
     # 3) Migrate
     # Definitions of these three methods can be found in the repos root README.md
-
-    method = ""
     if uprev_methods.get(rdg_datasets.import_method, None) != None:
         method = rdg_datasets.import_method
         method_handle = uprev_methods.get(rdg_datasets.import_method, None)
@@ -34,7 +29,20 @@ def try_uprev(config: Config, rdg: str, storage_format_version: int, uprev_metho
     else:
         raise RuntimeError("no valid uprev method for rdg {}, available uprev methods {}".format(rdg, uprev_methods))
 
-    # print("Upreving rdg {}, using method [{}] found at [{}]".format(rdg, method, method_handle))
+    return method, method_handle
+
+def skip_uprev(rdg: str, storage_format_version: int, uprev_methods):
+    method, method_handle = get_method(rdg, uprev_methods)
+    path = method_handle.local_path / "storage_format_version_{}".format(storage_format_version)
+    if path.is_dir():
+        return True, path
+    return False, pathlib.Path
+
+# Try to uprev the rdg using the available methods in priority order
+# Returns path to upreved rdg
+def try_uprev(config: Config, rdg: str, storage_format_version: int, uprev_methods: dict) -> pathlib.Path:
+    method, method_handle = get_method(rdg, uprev_methods)
+    color.print_ok(("Upreving rdg {}, using method [{}] found at [{}]".format(rdg, method, method_handle)))
     return method_handle.uprev(config, storage_format_version)
 
 
@@ -104,6 +112,12 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
     must_manually_uprev = []
     # mapping from the rdg that was successfully upreved, to its location
     uprev_success = {}
+    # mapping of rdgs that have already been upreved, to their location
+    skipped = {}
+
+    if not set(rdgs).issubset(set(rdg_datasets.available_rdgs())):
+        raise RuntimeError("rdgs {} are not in the list of available rdgs \n\t Available rdgs: {}".format(rdgs, rdg_datasets.available_rdgs()))
+
 
     for rdg, uprev_methods in rdg_datasets.available_uprev_methods().items():
         # skip over rdg if we have been passed a list to work on, and this is not one of them
@@ -115,13 +129,34 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
             continue
 
         try:
-            uprev_success[rdg] = try_uprev(config, rdg, storage_format_version, uprev_methods)
-            validate_version(rdg, storage_format_version, uprev_success[rdg])
+            # skip over rdgs that are already at desired storage_format_version
+            # still want to validate them though
+            skip, path = skip_uprev(rdg, storage_format_version, uprev_methods)
+            if(not skip):
+                uprev_success[rdg] = try_uprev(config, rdg, storage_format_version, uprev_methods)
+                validate_version(rdg, storage_format_version, uprev_success[rdg])
+                color.print_ok("Succeeded upreving {}".format(rdg))
+            else:
+                skipped[rdg] = path
+                validate_version(rdg, storage_format_version, skipped[rdg])
+                color.print_warn("Skipped upreving {}".format(rdg))
+
         except Exception as e:
+            color.print_error("Failed upreving {}".format(rdg))
             if not continue_on_failure:
                 raise
             else:
                 failed[rdg] = e.args
+
+    color.print_header("**************************************** Uprev RDG Report ****************************************")
+    if len(skipped) > 0:
+        color.print_warn(
+            "******************** Skipped {} rdgs already at storage_format_version_{} ********************".format(len(skipped), storage_format_version)
+        )
+        for rdg, path in skipped.items():
+            print("\t {} at {}".format(rdg, path))
+        print()
+
 
     if len(uprev_success) > 0:
         color.print_ok(
@@ -182,6 +217,7 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
             else:
                 failed[rdg] = e.args
 
+    color.print_header("**************************************** Validate RDG Report ****************************************")
     if len(validated_rdgs) > 0:
         color.print_ok(
             "******************** Successfully validated {} rdgs ********************".format(len(validated_rdgs))
