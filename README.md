@@ -2,7 +2,7 @@
 ## Organization
 ```
 
-rdg-datasets
+rdg_datasets
   - <name_of_some_rdg>/
     - [conditional] import.[py/sh]
     - [conditional] generate.[py/sh] 
@@ -11,7 +11,20 @@ rdg-datasets
     - storage_format_version_N/<rdg_contents>
     - storage_format_version_N+1/<rdg_contents>
     - storage_format_version_N+2/<rdg_contents>
+    
+csv_datasets
+ - <name_of_some_csv_dataset>/
+   - <csv_dataset_contents>
+  
+misc_datasets
+  - <name_of_some_misc_dataset>
+    - README.md describing what this misc dataset is and what it can be used for
 ```
+
+if a rdg can be imported from csv, if possible, its directory should be named identically to the csv datasets directory
+
+
+misc_datasets should be used only when the dataset does not fall into one of the other categories
 
 ### The following scripts are conditionally present for each RDG. One of the following options must be present.
 #### import.[py/sh]
@@ -39,7 +52,7 @@ If this is a special RDG, created to cover a specific test case, describe how it
 
 
 ## How to uprev the rdgs in this repo
-1) ensure the most recent master commit of this repo is checked out: `git checkout master; git pull`
+1) ensure the most recent master commit of this repo is checked out: `git checkout main; git pull`
 2) run `./uprev` to see the up to date options
 3) ensure `./uprev validate` passes for all rdgs
 4) make a new commit with the message `upreved rdgs to storage_format_version_M`

@@ -14,7 +14,7 @@ def migrate(config: Config, rdg_path: pathlib.Path, in_ver: int, out_ver: int) -
         raise RuntimeError("rdg must exist at {}".format(in_path))
 
     if out_path.is_dir() or out_path.is_file():
-        raise RuntimeError("rdg must NOT already exist at {}".format(out_path))
+        raise RuntimeError("rdg already exists at {}".format(out_path))
 
     try:
         rdg_migrate_tool(config, in_path, out_path)

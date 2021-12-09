@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 import pathlib
@@ -41,7 +42,15 @@ def validate_version(rdg: str, storage_format_version: int, rdg_dir: pathlib.Pat
     if not rdg_dir.is_dir():
         raise RuntimeError("rdg {} is not present at {}".format(rdg, rdg_dir))
 
-    part_header_path = rdg_dir / "part_vers00000000000000000001_rdg_node00000"
+    globs = glob.glob(str(rdg_dir) + "/part_vers00000000000000000001*")
+    if len(globs) == 0:
+        raise RuntimeError("Failed to locate any part headers for rdg {}.".format(rdg))
+
+    # arbitrarily choose the first one
+    part_header_path = pathlib.Path(globs[0])
+    if not part_header_path.is_file():
+        raise RuntimeError("Failed to locate a valid part header for rdg {}. Found globs : {}".format(rdg, globs))
+
     with open(part_header_path) as part_header:
         data = json.load(part_header)
         written_version = data.get("kg.v1.storage_format_version", None)
