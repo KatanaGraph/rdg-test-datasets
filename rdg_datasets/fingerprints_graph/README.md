@@ -1,3 +1,5 @@
+test data for rdkit plugin.
+
 nodes with labels corresponding to the fingerprinting mechanism used to generate the properties "expected_binary" and "expected_base64"
 
 ## Generation Steps:
