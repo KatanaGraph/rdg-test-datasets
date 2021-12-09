@@ -7,6 +7,7 @@ import click
 import rdg_datasets
 from libuprev import color
 from libuprev.uprev_config import Config
+from libuprev import fs
 
 
 # Try to uprev the rdg using the available methods in priority order
@@ -38,9 +39,7 @@ def try_uprev(config: Config, rdg: str, storage_format_version: int, uprev_metho
 
 
 def validate_version(rdg: str, storage_format_version: int, rdg_dir: pathlib.Path):
-
-    if not rdg_dir.is_dir():
-        raise RuntimeError("rdg {} is not present at {}".format(rdg, rdg_dir))
+    fs.ensure_dir("rdg", rdg_dir)
 
     globs = glob.glob(str(rdg_dir) + "/part_vers00000000000000000001*")
     if len(globs) == 0:
@@ -97,8 +96,7 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
 
     config.build_dir = pathlib.Path(build_dir)
 
-    if not config.build_dir.is_dir():
-        raise RuntimeError("build directory {} does not exist".format(config.build_dir))
+    fs.ensure_dir("build", config.build_dir)
 
     # mapping from the rdg that failed to the error received
     failed = {}
@@ -168,15 +166,12 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
     # mapping from the rdg that failed to the error received
     failed = {}
     available_rdgs = rdg_datasets.available_rdgs()
-
-    rdg_datasets_path = pathlib.Path(rdg_datasets.rdg_dataset_dir)
     for rdg in available_rdgs:
-
         # skip over rdg if we have been passed a list to work on, and this is not one of them
         if (len(rdgs) > 0 and rdg not in rdgs):
             continue
 
-        rdg_dir = rdg_datasets_path / rdg
+        rdg_dir = rdg_datasets.rdg_dataset_dir / rdg
         rdg_dir = rdg_dir / "storage_format_version_{}".format(storage_format_version)
         try:
             validate_version(rdg, storage_format_version, rdg_dir)

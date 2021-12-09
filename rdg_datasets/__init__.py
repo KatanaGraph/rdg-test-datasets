@@ -1,8 +1,9 @@
 import importlib
 import os
 import sys
+import pathlib
 
-rdg_dataset_dir = os.path.dirname(os.path.realpath(__file__))
+rdg_dataset_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 migrate_method = "migrate"
 generate_method = "generate"
 import_method = "import"
