@@ -325,9 +325,7 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
         if num_success != 0:
             raise RuntimeError("Expected to uprev 0 rdgs, but instead upreved {}".format(num_success))
 
-
         # ensure all is still sane
-        #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
         ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
 
     finally:
