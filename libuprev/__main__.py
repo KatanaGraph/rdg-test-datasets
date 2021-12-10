@@ -7,6 +7,7 @@ import click
 import rdg_datasets
 from libuprev import color
 from libuprev.uprev_config import Config
+from libuprev import constants
 from libuprev import fs
 
 def get_method(rdg: str, uprev_methods: dict):
@@ -33,7 +34,7 @@ def get_method(rdg: str, uprev_methods: dict):
 
 def skip_uprev(rdg: str, storage_format_version: int, uprev_methods):
     method, method_handle = get_method(rdg, uprev_methods)
-    path = method_handle.local_path / "storage_format_version_{}".format(storage_format_version)
+    path = method_handle.local_path / constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
     if path.is_dir():
         return True, path
     return False, pathlib.Path
@@ -207,7 +208,7 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
             continue
 
         rdg_dir = rdg_datasets.rdg_dataset_dir / rdg
-        rdg_dir = rdg_dir / "storage_format_version_{}".format(storage_format_version)
+        rdg_dir = rdg_dir / constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
         try:
             validate_version(rdg, storage_format_version, rdg_dir)
             validated_rdgs[rdg] = rdg_dir

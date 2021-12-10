@@ -3,8 +3,10 @@ import pathlib
 import subprocess
 
 from libuprev.uprev_config import Config
+from libuprev import constants
 from libuprev import fs
 
+# create a new rdg by importing csv files
 # named as such to avoid naming conflicts :(
 def import_(config: Config,
             rdg_path: pathlib.Path,
@@ -15,7 +17,7 @@ def import_(config: Config,
             import_args: list[str]
             ) -> pathlib.Path :
 
-    out_path = rdg_path / "storage_format_version_{}".format(out_ver)
+    out_path = rdg_path / constants.STORAGE_FORMAT_VERSION_STR.format(out_ver)
     node_file_path = csv_path / node_file
     edge_file_path = csv_path / edge_file
 
@@ -43,13 +45,13 @@ def import_tool(config: Config,
                 aws_disabled: bool = True):
 
     tool_name = "csv-import"
-    tool_path = (config.build_dir / "tools/import/{}".format(tool_name))
+    tool_path = (config.build_dir / constants.TOOLS.get(tool_name, None))
 
     fs.ensure_dir("build", config.build_dir)
-    fs.ensure_file("import tool", tool_path, "have you built it?. Run 'make {}' in katana-enterprise".format(tool_name))
+    fs.ensure_file("import tool", tool_path, "have you built it?. Run 'make {}' in {}".format(tool_name, config.build_dir))
 
-    cmd = [tool_path, node_file_path, edge_file_path, str(out_path.absolute()), "--input-dir={}/".format(input_dir)]
-    cmd = cmd + import_args
+    # create command in the form "csv-import  <node_file> <edge_file> <output_rdg_dir> <args>"
+    cmd = [tool_path.absolute(), node_file_path.absolute(), edge_file_path.absolute(), out_path.absolute(), "--input-dir={}/".format(input_dir.absolute())] + import_args
 
     env = os.environ.copy()
     env["AWS_EC2_METADATA_DISABLED"] = str(aws_disabled)
