@@ -53,7 +53,8 @@ If this is a special RDG, created to cover a specific test case, describe how it
 
 ## How to uprev the rdgs in this repo
 1) ensure the most recent master commit of this repo is checked out: `git checkout main; git pull`
-2) run `./uprev` to see the up to date options
+2) run `./uprev build_tools --build_dir=<katana_build_dir>`
+2) run `./uprev rdgs` with the desired args
 3) ensure `./uprev validate` passes for all rdgs
 4) make a new commit with the message `upreved rdgs to storage_format_version_M`
 5) create a katana repo PR to bump up the version of this submodule

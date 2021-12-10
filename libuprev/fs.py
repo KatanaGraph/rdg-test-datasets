@@ -39,3 +39,9 @@ def ensure_input_rdg_exists(input_rdg, input_rdg_path, storage_format_version):
     path = input_rdg_path / constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
     error_message = "Creating this rdg depends on {0} at storage_format_version_{1}. First re-run this command with the flag '--rdg={0}. Once that completes, re-run the original command'".format(input_rdg, storage_format_version)
     ensure_dir("input rdg".format(input_rdg), path, error_message)
+
+def ensure_build_dir(build_path: pathlib.Path):
+    ensure_dir("katana-enterprise build directory", build_path)
+    # use presence of CMakeCache.txt to determine if this is actually the build directory
+    # this isn't perfect, but is used elsewhere in the codebase so is "good 'nuff"
+    ensure_file("cmake file", build_path / "CMakeCache.txt", "It doesn't look like the provided path is actually your build directory")

@@ -3,8 +3,6 @@ test data for rdkit plugin.
 The raw data from which the rdg is generated is in `csv_datasets/smiles_small/`
 
 
-
-
 ## Manual generation steps
 
 *These shouldn't be necessary as they are now in a script, use `./uprev` to generate a new version of this rdg*

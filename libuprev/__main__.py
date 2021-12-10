@@ -5,10 +5,8 @@ import pathlib
 import click
 
 import rdg_datasets
-from libuprev import color
+from libuprev import color, constants, fs, tools
 from libuprev.uprev_config import Config
-from libuprev import constants
-from libuprev import fs
 
 def get_method(rdg: str, uprev_methods: dict):
     # Uprev Method Priority Order:
@@ -105,7 +103,10 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
 
     config.build_dir = pathlib.Path(build_dir)
 
-    fs.ensure_dir("build", config.build_dir)
+    fs.ensure_build_dir(config.build_dir)
+
+    if not tools.in_tree_tools_built(config.build_dir):
+        raise RuntimeError("Not all required tools are available, please run `./uprev build_tools --build_dir=<katana-enterprise build dir>`")
 
     # mapping from the rdg that failed to the error received
     failed = {}
@@ -240,6 +241,14 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
             color.print_error("ERROR: not all available_rdgs were validated, but not failures were observed")
             print("expected to validate: {}".format(available_rdgs))
             print("but only validated: {}".format(validated_rdgs))
+
+
+
+@cli.command(name="build_tools")
+@click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
+def cli_build_tools(build_dir:str):
+    build_path = pathlib.Path(build_dir)
+    tools.build_in_tree_tools(build_path)
 
 
 if __name__ == "__main__":
