@@ -2,6 +2,7 @@ import glob
 import json
 import os
 import pathlib
+import shutil
 import click
 
 import rdg_datasets
@@ -92,19 +93,17 @@ def cli():
 
 
 @cli.command(name="rdgs")
-@click.option("--storage_format_version", type=int, required=True, help="storage_format_version to uprev rdgs to")
+@click.option("--storage_format_version", type=int, required=True, help="storage_format_version to uprev rdgs to. This should match the version which the in-tree tools will output, which is defined at katana/libtsuba/RDGPartHeader.h:latest_storage_format_version_ ")
 @click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
 @click.option(
     "--continue_on_failure", default=False, is_flag=True, help="Attempt to continue after exception", show_default=True
 )
 @click.option("--rdg", "-R", "rdgs", type=str, multiple=True, help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'")
-def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: bool, rdgs: list[str]):
+@click.option("--return_num_success", type=bool, default=False, hidden=True)
+def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: bool, rdgs: list[str], return_num_success: bool):
     config = Config()
-
     config.build_dir = pathlib.Path(build_dir)
-
     fs.ensure_build_dir(config.build_dir)
-
     if not tools.in_tree_tools_built(config.build_dir):
         raise RuntimeError("Not all required tools are available, please run `./uprev build_tools --build_dir=<katana-enterprise build dir>`")
 
@@ -189,6 +188,10 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
             print("\t {1} at {0}/{1}/".format(rdg_datasets.rdg_dataset_dir, rdg))
         print()
 
+    # used for testing
+    if return_num_success:
+        return len(uprev_success)
+
 
 @cli.command(name="validate_rdgs")
 @click.option("--storage_format_version", type=int, required=True, help="storage_format_version to check")
@@ -246,10 +249,86 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
 
 @cli.command(name="build_tools")
 @click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
-def cli_build_tools(build_dir:str):
+def cli_build_tools(build_dir: str):
     build_path = pathlib.Path(build_dir)
     tools.build_in_tree_tools(build_path)
 
+
+@cli.command(name="test")
+@click.option("--storage_format_version", type=int, required=True, help="This should match the version which the in-tree tools will output, which is defined at katana/libtsuba/RDGPartHeader.h:latest_storage_format_version_ ")
+@click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
+@click.pass_context
+def cli_test(ctx, storage_format_version: int, build_dir: str):
+    # assumes that the test rdgs are available at the passed storage_format_version already
+
+    def cleanup(orig_paths: dict[str, pathlib.Path], backup_paths: dict[str, pathlib.Path]):
+        for rdg, path in orig_paths.items():
+            fs.cleanup(path)
+        for rdg, path in backup_paths.items():
+            shutil.move(path, rdg_paths.get(rdg, None))
+
+    # the rdgs to test upreving
+    tests = {}
+    tests[rdg_datasets.import_method] = "smiles_small"
+    tests[rdg_datasets.generate_method] = "partitioned_smiles_small"
+    tests[rdg_datasets.migrate_method] = "ldbc_003"
+
+    available_rdgs = rdg_datasets.available_rdgs()
+    available_methods = rdg_datasets.available_uprev_methods()
+
+    tmp_path = pathlib.Path("/tmp")
+    rdg_paths = {}
+    backup_paths = {}
+    storage_format_version_str = constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
+    for method, rdg in tests.items():
+        if rdg not in available_rdgs:
+            raise RuntimeError("rdg {} to test {} on is not available".format(rdg, method))
+        # store path of rdg at existing storage_format_version
+        path = rdg_datasets.rdg_dataset_dir / rdg / storage_format_version_str
+        fs.ensure_dir("rdg", path)
+        rdg_paths[rdg] = path
+
+        # store path to temporarily move the rdg to
+        path = tmp_path / "{}_{}".format(rdg, storage_format_version_str)
+        fs.ensure_empty("temp", path)
+        backup_paths[rdg] = path
+
+    # sanity check before we start
+    #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
+    ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+    try:
+
+        # move our test rdgs
+        for method, rdg in tests.items():
+            shutil.move(rdg_paths.get(rdg, None), backup_paths.get(rdg, None))
+
+        # test import
+        num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, rdgs=[tests.get(rdg_datasets.import_method, None)], return_num_success=True)
+        if num_success != 1:
+            raise RuntimeError("Expected to uprev 1 rdg, but instead upreved {}".format(num_success))
+
+        # test upreving all uprev-able rdgs
+        num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, return_num_success=True)
+        if num_success != 2:
+            raise RuntimeError("Expected to uprev 2 rdgs, but instead upreved {}".format(num_success))
+
+        # ensure all rdgs are actually available again
+        #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
+        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+
+        # test running uprev when there is no work to do
+        num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, return_num_success=True)
+        if num_success != 0:
+            raise RuntimeError("Expected to uprev 0 rdgs, but instead upreved {}".format(num_success))
+
+
+        # ensure all is still sane
+        #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
+        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+
+    finally:
+        cleanup(rdg_paths, backup_paths)
+        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
 
 if __name__ == "__main__":
     cli.main(prog_name="uprev")
