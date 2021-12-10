@@ -240,10 +240,16 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
         print()
 
     if len(failed) == 0:
-        if (len(rdgs) == 0 and len(validated_rdgs) != len(available_rdgs)) or (len(rdgs) != len(validated_rdgs)):
-            color.print_error("ERROR: not all available_rdgs were validated, but not failures were observed")
+        num_should_validate = 0
+        if len(rdgs) != 0:
+            num_should_validate = len(rdgs)
+        else:
+            num_should_validate = len(available_rdgs)
+
+        if num_should_validate != len(validated_rdgs):
+            color.print_error("ERROR: not all available_rdgs were validated, but no failures were observed")
             print("expected to validate: {}".format(available_rdgs))
-            print("but only validated: {}".format(validated_rdgs))
+            print("but only validated: {}".format(validated_rdgs.keys()))
 
 
 
@@ -294,8 +300,7 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
         backup_paths[rdg] = path
 
     # sanity check before we start
-    #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
-    ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+    ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
     try:
 
         # move our test rdgs
@@ -313,8 +318,7 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
             raise RuntimeError("Expected to uprev 2 rdgs, but instead upreved {}".format(num_success))
 
         # ensure all rdgs are actually available again
-        #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
-        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
 
         # test running uprev when there is no work to do
         num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, return_num_success=True)
@@ -324,11 +328,11 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
 
         # ensure all is still sane
         #TODO(emcginnis): remove continue on failure when we have all rdgs available at this version
-        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
 
     finally:
         cleanup(rdg_paths, backup_paths)
-        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=True)
+        ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
 
 if __name__ == "__main__":
     cli.main(prog_name="uprev")
