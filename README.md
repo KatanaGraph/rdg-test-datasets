@@ -4,9 +4,9 @@
 
 rdg_datasets
   - <name_of_some_rdg>/
-    - [conditional] import.[py/sh]
-    - [conditional] generate.[py/sh] 
-    - [conditional] migrate.[py/sh] 
+    - [conditional] import.py
+    - [conditional] generate.py
+    - [conditional] migrate.py
     - [conditional] README.md
     - storage_format_version_N/<rdg_contents>
     - storage_format_version_N+1/<rdg_contents>
@@ -27,15 +27,15 @@ if a rdg can be imported from csv, if possible, its directory should be named id
 misc_datasets should be used only when the dataset does not fall into one of the other categories
 
 ### The following scripts are conditionally present for each RDG. One of the following options must be present.
-#### import.[py/sh]
+#### import.py
 Script to import this RDG from CSV
 When to use:
 This is the preferred option. If the RDG can be imported from CSV, do this.
-#### generate.[py/sh]
+#### generate.py
 Script to generate this RDG in special way
 When to use:
 To be used if this RDG is not importable from CSV. If generation is difficult to automate, consider using migrate. 
-#### migrate.[py/sh]
+#### migrate.py
 Script to migrate this RDG from its current storage_format_version to the latest
 When to use:
 Some special RDGs are not easy to generate in an automatible fashion, but can be easily migrated to the latest storage_format_version by loading/storing them. 
