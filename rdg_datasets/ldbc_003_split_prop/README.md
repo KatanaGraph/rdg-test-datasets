@@ -1,4 +1,6 @@
 HOW THIS GRAPH WAS CREATED:
+
+
     1) in ParquetWriter.cpp change kMaxRowsPerFile to 10000
     ```
     constexpr int64_t kMaxRowsPerFile = 0x2710;
