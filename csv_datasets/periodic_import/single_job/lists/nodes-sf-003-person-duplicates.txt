@@ -1,0 +1,8 @@
+creationDate:DATETIME|id:ID(Person)|firstName:STRING|lastName:STRING|gender:STRING|birthday:DATE|locationIP:STRING|browserUsed:STRING
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_0
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_0
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_0
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_1
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_1
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_1
+sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_1
