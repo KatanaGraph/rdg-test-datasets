@@ -1,3 +1,8 @@
+# Important
+no symlinks can be added to this repo because:
+    1) this repo can be mirrored to storage platforms that do not support
+    symlinks
+    2) pythons zipfile lib does not support symlinks
 
 ## Organization
 ```
