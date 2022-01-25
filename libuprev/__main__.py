@@ -51,7 +51,7 @@ def validate_version(rdg: str, storage_format_version: int, rdg_dir: pathlib.Pat
 
     globs = glob.glob(str(rdg_dir) + "/part_vers00000000000000000001*")
     if len(globs) == 0:
-        raise RuntimeError("Failed to locate any part headers for rdg {}.".format(rdg))
+        raise RuntimeError("Failed to locate any part headers for rdg {} in {}".format(rdg, rdg_dir))
 
     # arbitrarily choose the first one
     part_header_path = pathlib.Path(globs[0])
