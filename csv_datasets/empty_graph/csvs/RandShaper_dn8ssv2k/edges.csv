@@ -1,0 +1,1 @@
+:START_ID,:END_ID,I:int,J:long,F:float,D:double,Z:boolean,B:byte,S:short,C:char,str:string,date:date,datetime:datetime

@@ -1,0 +1,15 @@
+{
+    "datetime": "2022-01-25 16:30:56.088834",
+    "graph_id": "RandShaper_dn8ssv2k",
+    "index": 0,
+    "max_edges": "0",
+    "max_nodes": "0",
+    "min_edges": "0",
+    "min_nodes": "0",
+    "num_edges": 0,
+    "num_instances": "1",
+    "num_nodes": 0,
+    "seed": "1",
+    "shaper": "RandShaper",
+    "user": "farah"
+}
