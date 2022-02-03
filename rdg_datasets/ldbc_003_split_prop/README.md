@@ -19,3 +19,5 @@ HOW THIS GRAPH WAS CREATED:
 
     it would be really nice if we could generate this in a more automated
     fashion, but this is the state of things as of now.
+
+    TODO(thunt): we could automate this with a feature flag for short parquet files.
