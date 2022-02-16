@@ -12,10 +12,10 @@ Before regenerating, modify `generate-maximal-storage-format-rdg/generate-maxima
 
 
 ```
-STORAGE_FORMAT_VERSION=storage_format_version_3
+STORAGE_FORMAT_VERSION=storage_format_version_6
 BUILD_DIR=
 SRC_DIR=
-${BUILD_DIR}/tools/generate-maximal-storage-format-rdg/generate-maximal-storage-format-rdg ${SRC_DIR}/external/test-datasets/rdg_datasets/ldbc_003/${STORAGE_FORMAT_VERSION}/ ${SRC_DIR}/external/test-datasets/rdg_datasets/ldbc_003_maximal/${STORAGE_FORMAT_VERSION}/
+${BUILD_DIR}/external/katana/tools/generate-maximal-storage-format-rdg/generate-maximal-storage-format-rdg ${SRC_DIR}/external/katana/external/test-datasets/rdg_datasets/ldbc_003/${STORAGE_FORMAT_VERSION}/ ${SRC_DIR}/external/katana/external/test-datasets/rdg_datasets/ldbc_003_maximal/${STORAGE_FORMAT_VERSION}/
 ```
 
 
