@@ -50,7 +50,7 @@ def generate_partition_dist_tool(config: Config,
     fs.ensure_dir("build", config.build_dir)
     fs.ensure_file("generation_tool", tool_path, "have you built it?. Run 'make {}' in {}".format(tool_name, config.build_dir))
 
-    # create command in the form "mpirun -n 4 partition-dist --loadAllProperties --newRDG=<output_rdg_path> <input_rdg_path>
+    # create command in the form "mpirun -n 4 partition-dist --SomeFlag --newRDG=<output_rdg_path> <input_rdg_path>
     cmd = ["mpirun", "-n", str(num_partitions), tool_path.absolute()] + generate_args + ["--newRDG={}".format(out_path.absolute()), in_path.absolute()]
 
     env = os.environ.copy()

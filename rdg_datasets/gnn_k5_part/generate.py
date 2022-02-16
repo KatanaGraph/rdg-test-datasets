@@ -12,7 +12,7 @@ local_path = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 input_rdg = "gnn_k5_single"
 input_rdg_path = rdg_datasets.rdg_dataset_dir / input_rdg
 num_partitions = 2
-generate_args = ["--loadAllProperties", "--partition=blocked-oec", "--mirrorEdges"]
+generate_args = ["--partition=blocked-oec", "--mirrorEdges"]
 
 
 def uprev(config: Config, new_storage_format_version: int) -> pathlib.Path:

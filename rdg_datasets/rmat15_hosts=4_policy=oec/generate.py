@@ -12,7 +12,7 @@ local_path = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 input_rdg = "rmat15"
 input_rdg_path = rdg_datasets.rdg_dataset_dir / input_rdg
 num_partitions = 4
-generate_args = ["--loadAllProperties", "--partition=blocked-oec"]
+generate_args = ["--partition=blocked-oec"]
 
 
 def uprev(config: Config, new_storage_format_version: int) -> pathlib.Path:
