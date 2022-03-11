@@ -12,10 +12,6 @@ node_file = "/dev/null"
 edge_file = "/dev/null"
 
 def uprev(config: Config, new_storage_format_version: int) -> pathlib.Path:
-    available_csv = csv_datasets.available_csv()
-    if csv_dataset not in available_csv:
-        raise RuntimeError("csv dataset {} not in available csv_datasets: {}".format(csv_dataset, available_csv))
-
     return rdg_import.import_(config=config,
                               rdg_path=local_path,
                               out_ver=new_storage_format_version,

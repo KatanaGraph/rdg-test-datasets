@@ -3,7 +3,7 @@ import shutil
 from libuprev import constants
 
 def ensure_file(name: str, path: pathlib.Path, message: str = None):
-    if not path.is_file():
+    if not path.is_file() and not path.is_char_device():
         if message is None:
             raise RuntimeError("{} file does not exist at {}".format(name, path))
         else:
