@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import importlib
 import os
-import sys
 import pathlib
+import sys
 
 rdg_dataset_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 migrate_method = "migrate"

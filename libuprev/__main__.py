@@ -5,11 +5,12 @@ import json
 import os
 import pathlib
 import shutil
-import click
 
+import click
 import rdg_datasets
 from libuprev import color, constants, fs, tools
 from libuprev.uprev_config import Config
+
 
 def get_method(rdg: str, uprev_methods: dict):
     # Uprev Method Priority Order:
@@ -33,12 +34,14 @@ def get_method(rdg: str, uprev_methods: dict):
 
     return method, method_handle
 
+
 def skip_uprev(rdg: str, storage_format_version: int, uprev_methods):
     method, method_handle = get_method(rdg, uprev_methods)
     path = method_handle.local_path / constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
     if path.is_dir():
         return True, path
     return False, pathlib.Path
+
 
 # Try to uprev the rdg using the available methods in priority order
 # Returns path to upreved rdg
@@ -95,19 +98,35 @@ def cli():
 
 
 @cli.command(name="rdgs")
-@click.option("--storage_format_version", type=int, required=True, help="storage_format_version to uprev rdgs to. This should match the version which the in-tree tools will output, which is defined at katana/libtsuba/RDGPartHeader.h:latest_storage_format_version_ ")
+@click.option(
+    "--storage_format_version",
+    type=int,
+    required=True,
+    help="storage_format_version to uprev rdgs to. This should match the version which the in-tree tools will output, which is defined at katana/libtsuba/RDGPartHeader.h:latest_storage_format_version_ ",
+)
 @click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
 @click.option(
     "--continue_on_failure", default=False, is_flag=True, help="Attempt to continue after exception", show_default=True
 )
-@click.option("--rdg", "-R", "rdgs", type=str, multiple=True, help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'")
+@click.option(
+    "--rdg",
+    "-R",
+    "rdgs",
+    type=str,
+    multiple=True,
+    help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'",
+)
 @click.option("--return_num_success", type=bool, default=False, hidden=True)
-def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: bool, rdgs: list[str], return_num_success: bool):
+def cli_rdgs(
+    storage_format_version: int, build_dir: str, continue_on_failure: bool, rdgs: list[str], return_num_success: bool
+):
     config = Config()
     config.build_dir = pathlib.Path(build_dir)
     fs.ensure_build_dir(config.build_dir)
     if not tools.in_tree_tools_built(config.build_dir):
-        raise RuntimeError("Not all required tools are available, please run `./uprev build_tools --build_dir=<katana-enterprise build dir>`")
+        raise RuntimeError(
+            "Not all required tools are available, please run `./uprev build_tools --build_dir=<katana-enterprise build dir>`"
+        )
 
     # mapping from the rdg that failed to the error received
     failed = {}
@@ -119,12 +138,15 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
     skipped = {}
 
     if not set(rdgs).issubset(set(rdg_datasets.available_rdgs())):
-        raise RuntimeError("rdgs {} are not in the list of available rdgs \n\t Available rdgs: {}".format(rdgs, rdg_datasets.available_rdgs()))
-
+        raise RuntimeError(
+            "rdgs {} are not in the list of available rdgs \n\t Available rdgs: {}".format(
+                rdgs, rdg_datasets.available_rdgs()
+            )
+        )
 
     for rdg, uprev_methods in rdg_datasets.available_uprev_methods().items():
         # skip over rdg if we have been passed a list to work on, and this is not one of them
-        if (len(rdgs) > 0 and rdg not in rdgs):
+        if len(rdgs) > 0 and rdg not in rdgs:
             continue
 
         if len(uprev_methods) == 0:
@@ -135,7 +157,7 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
             # skip over rdgs that are already at desired storage_format_version
             # still want to validate them though
             skip, path = skip_uprev(rdg, storage_format_version, uprev_methods)
-            if(not skip):
+            if not skip:
                 uprev_success[rdg] = try_uprev(config, rdg, storage_format_version, uprev_methods)
                 validate_version(rdg, storage_format_version, uprev_success[rdg])
                 color.print_ok("Succeeded upreving {}".format(rdg))
@@ -151,15 +173,18 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
             else:
                 failed[rdg] = e.args
 
-    color.print_header("**************************************** Uprev RDG Report ****************************************")
+    color.print_header(
+        "**************************************** Uprev RDG Report ****************************************"
+    )
     if len(skipped) > 0:
         color.print_warn(
-            "******************** Skipped {} rdgs already at storage_format_version_{} ********************".format(len(skipped), storage_format_version)
+            "******************** Skipped {} rdgs already at storage_format_version_{} ********************".format(
+                len(skipped), storage_format_version
+            )
         )
         for rdg, path in skipped.items():
             print("\t {} at {}".format(rdg, path))
         print()
-
 
     if len(uprev_success) > 0:
         color.print_ok(
@@ -200,7 +225,14 @@ def cli_rdgs(storage_format_version: int, build_dir: str, continue_on_failure: b
 @click.option(
     "--continue_on_failure", default=False, is_flag=True, help="Attempt to continue after exception", show_default=True
 )
-@click.option("--rdg", "-R", "rdgs", type=str, multiple=True, help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'")
+@click.option(
+    "--rdg",
+    "-R",
+    "rdgs",
+    type=str,
+    multiple=True,
+    help="RDG to operate on, can be passed multiple times: '-R ldbc_003 -R smiles_small'",
+)
 def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rdgs: list[str]):
 
     # mapping of the rdgs which were successfully validated, to its location
@@ -210,7 +242,7 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
     available_rdgs = rdg_datasets.available_rdgs()
     for rdg in available_rdgs:
         # skip over rdg if we have been passed a list to work on, and this is not one of them
-        if (len(rdgs) > 0 and rdg not in rdgs):
+        if len(rdgs) > 0 and rdg not in rdgs:
             continue
 
         rdg_dir = rdg_datasets.rdg_dataset_dir / rdg
@@ -224,7 +256,9 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
             else:
                 failed[rdg] = e.args
 
-    color.print_header("**************************************** Validate RDG Report ****************************************")
+    color.print_header(
+        "**************************************** Validate RDG Report ****************************************"
+    )
     if len(validated_rdgs) > 0:
         color.print_ok(
             "******************** Successfully validated {} rdgs ********************".format(len(validated_rdgs))
@@ -254,7 +288,6 @@ def cli_validate_rdgs(storage_format_version: int, continue_on_failure: bool, rd
             print("but only validated: {}".format(validated_rdgs.keys()))
 
 
-
 @cli.command(name="build_tools")
 @click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
 def cli_build_tools(build_dir: str):
@@ -263,7 +296,12 @@ def cli_build_tools(build_dir: str):
 
 
 @cli.command(name="test")
-@click.option("--storage_format_version", type=int, required=True, help="This should match the version which the in-tree tools will output, which is defined at katana/libtsuba/RDGPartHeader.h:latest_storage_format_version_ ")
+@click.option(
+    "--storage_format_version",
+    type=int,
+    required=True,
+    help="This should match the version which the in-tree tools will output, which is defined at katana/libtsuba/RDGPartHeader.h:latest_storage_format_version_ ",
+)
 @click.option("--build_dir", type=str, required=True, help="katana-enterprise build directory")
 @click.pass_context
 def cli_test(ctx, storage_format_version: int, build_dir: str):
@@ -310,12 +348,25 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
             shutil.move(rdg_paths.get(rdg, None), backup_paths.get(rdg, None))
 
         # test import
-        num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, rdgs=[tests.get(rdg_datasets.import_method, None)], return_num_success=True)
+        num_success = ctx.invoke(
+            cli_rdgs,
+            storage_format_version=storage_format_version,
+            build_dir=build_dir,
+            continue_on_failure=False,
+            rdgs=[tests.get(rdg_datasets.import_method, None)],
+            return_num_success=True,
+        )
         if num_success != 1:
             raise RuntimeError("Expected to uprev 1 rdg, but instead upreved {}".format(num_success))
 
         # test upreving all uprev-able rdgs
-        num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, return_num_success=True)
+        num_success = ctx.invoke(
+            cli_rdgs,
+            storage_format_version=storage_format_version,
+            build_dir=build_dir,
+            continue_on_failure=False,
+            return_num_success=True,
+        )
         if num_success != 2:
             raise RuntimeError("Expected to uprev 2 rdgs, but instead upreved {}".format(num_success))
 
@@ -323,7 +374,13 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
         ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
 
         # test running uprev when there is no work to do
-        num_success = ctx.invoke(cli_rdgs, storage_format_version=storage_format_version, build_dir=build_dir, continue_on_failure=False, return_num_success=True)
+        num_success = ctx.invoke(
+            cli_rdgs,
+            storage_format_version=storage_format_version,
+            build_dir=build_dir,
+            continue_on_failure=False,
+            return_num_success=True,
+        )
         if num_success != 0:
             raise RuntimeError("Expected to uprev 0 rdgs, but instead upreved {}".format(num_success))
 
@@ -333,6 +390,7 @@ def cli_test(ctx, storage_format_version: int, build_dir: str):
     finally:
         cleanup(rdg_paths, backup_paths)
         ctx.invoke(cli_validate_rdgs, storage_format_version=storage_format_version, continue_on_failure=False)
+
 
 if __name__ == "__main__":
     cli.main(prog_name="uprev")

@@ -4,20 +4,21 @@ import os
 import pathlib
 import subprocess
 
+from libuprev import constants, fs
 from libuprev.uprev_config import Config
-from libuprev import constants
-from libuprev import fs
+
 
 # create a new rdg by importing csv files
 # named as such to avoid naming conflicts :(
-def import_(config: Config,
-            rdg_path: pathlib.Path,
-            out_ver: int,
-            csv_path: pathlib.Path,
-            node_file: str,
-            edge_file: str,
-            import_args: list[str]
-            ) -> pathlib.Path :
+def import_(
+    config: Config,
+    rdg_path: pathlib.Path,
+    out_ver: int,
+    csv_path: pathlib.Path,
+    node_file: str,
+    edge_file: str,
+    import_args: list[str],
+) -> pathlib.Path:
 
     out_path = rdg_path / constants.STORAGE_FORMAT_VERSION_STR.format(out_ver)
     node_file_path = csv_path / node_file
@@ -37,23 +38,32 @@ def import_(config: Config,
     return out_path
 
 
-
-def import_tool(config: Config,
-                out_path: pathlib.Path,
-                input_dir: pathlib.Path,
-                node_file_path: pathlib.Path,
-                edge_file_path: pathlib.Path,
-                import_args: list[str],
-                aws_disabled: bool = True):
+def import_tool(
+    config: Config,
+    out_path: pathlib.Path,
+    input_dir: pathlib.Path,
+    node_file_path: pathlib.Path,
+    edge_file_path: pathlib.Path,
+    import_args: list[str],
+    aws_disabled: bool = True,
+):
 
     tool_name = "csv-import"
-    tool_path = (config.build_dir / constants.TOOLS.get(tool_name, None))
+    tool_path = config.build_dir / constants.TOOLS.get(tool_name, None)
 
     fs.ensure_dir("build", config.build_dir)
-    fs.ensure_file("import tool", tool_path, "have you built it?. Run 'make {}' in {}".format(tool_name, config.build_dir))
+    fs.ensure_file(
+        "import tool", tool_path, "have you built it?. Run 'make {}' in {}".format(tool_name, config.build_dir)
+    )
 
     # create command in the form "csv-import  <node_file> <edge_file> <output_rdg_dir> <args>"
-    cmd = [tool_path.absolute(), node_file_path.absolute(), edge_file_path.absolute(), out_path.absolute(), "--input-dir={}/".format(input_dir.absolute())] + import_args
+    cmd = [
+        tool_path.absolute(),
+        node_file_path.absolute(),
+        edge_file_path.absolute(),
+        out_path.absolute(),
+        "--input-dir={}/".format(input_dir.absolute()),
+    ] + import_args
 
     env = os.environ.copy()
     env["AWS_EC2_METADATA_DISABLED"] = str(aws_disabled)
