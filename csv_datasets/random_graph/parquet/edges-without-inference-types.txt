@@ -1,0 +1,2 @@
+:START_ID|id:END_ID|J|F|D|Z|B|S|C|str|date|datetime
+parquet/edgedata.parquet

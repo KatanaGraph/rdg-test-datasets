@@ -1,0 +1,2 @@
+id:ID|J|F|D|Z|B|S|C|str|date|datetime
+parquet/nodedata.parquet

@@ -1,0 +1,16 @@
+{
+    "datetime": "2022-03-29 21:28:28.289685",
+    "graph_id": "RandShaper_w2yl2b44",
+    "index": 0,
+    "max_edges": "10",
+    "max_nodes": "15",
+    "min_edges": "5",
+    "min_nodes": "10",
+    "num_edges": 6,
+    "num_instances": "1",
+    "num_nodes": 13,
+    "seed": "1",
+    "shaper": "RandShaper",
+    "symmetric": false,
+    "user": "bhargavi"
+}
