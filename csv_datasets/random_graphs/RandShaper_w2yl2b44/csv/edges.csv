@@ -1,0 +1,7 @@
+:START_ID,:END_ID,id:int,J:long,F:float,D:double,Z:boolean,B:byte,S:short,C:char,str:string,date:date,datetime:datetime
+csv/e-0.csv
+csv/e-1.csv
+csv/e-2.csv
+csv/e-3.csv
+csv/e-4.csv
+csv/e-5.csv
