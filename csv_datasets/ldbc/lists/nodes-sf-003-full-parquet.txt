@@ -14,19 +14,19 @@ id:ID(TagClass)|name:STRING|url:STRING
 sf-003/parquet/31/part.0.parquet
 sf-003/parquet/31/part.1.parquet
 
-creationDate:IGNORE|id:ID(Comment)|locationIP:STRING|browserUsed:STRING|content:STRING|length:LONG
+creationDate:DATETIME|id:ID(Comment)|locationIP:STRING|browserUsed:STRING|content:STRING|length:LONG
 sf-003/parquet/32/part.0.parquet
 sf-003/parquet/32/part.1.parquet
 
-creationDate:IGNORE|id:ID(Forum)|title:STRING
+creationDate:DATETIME|id:ID(Forum)|title:STRING
 sf-003/parquet/33/part.0.parquet
 sf-003/parquet/33/part.1.parquet
 
-creationDate:IGNORE|id:ID(Person)|firstName:STRING|lastName:STRING|gender:STRING|birthday:IGNORE|locationIP:STRING|browserUsed:STRING
+creationDate:DATETIME|id:ID(Person)|firstName:STRING|lastName:STRING|gender:STRING|birthday:IGNORE|locationIP:STRING|browserUsed:STRING
 sf-003/parquet/34/part.0.parquet
 sf-003/parquet/34/part.1.parquet
 
-creationDate:IGNORE|id:ID(Post)|imageFile:STRING|locationIP:STRING|browserUsed:STRING|language:STRING|content:STRING|length:LONG|forumID:IGNORE
+creationDate:DATETIME|id:ID(Post)|imageFile:STRING|locationIP:STRING|browserUsed:STRING|language:STRING|content:STRING|length:LONG|forumID:IGNORE
 sf-003/parquet/35/part.0.parquet
 sf-003/parquet/35/part.1.parquet
 

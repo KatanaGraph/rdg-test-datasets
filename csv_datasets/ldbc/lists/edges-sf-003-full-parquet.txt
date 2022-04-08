@@ -38,7 +38,7 @@ creationDate:IGNORE|:START_ID(Forum)|:END_ID(Post)
 sf-003/parquet/9/part.0.parquet
 sf-003/parquet/9/part.1.parquet
 
-creationDate:IGNORE|:START_ID(Forum)|:END_ID(Person)
+creationDate:DATETIME|:START_ID(Forum)|:END_ID(Person)
 sf-003/parquet/10/part.0.parquet
 sf-003/parquet/10/part.1.parquet
 
@@ -63,12 +63,12 @@ sf-003/parquet/15/part.0.parquet
 sf-003/parquet/15/part.1.parquet
 
 KATANA_DEFAULT_LABEL=KNOWS
-creationDate:IGNORE|:START_ID(Person)|:END_ID(Person)
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Person)
 sf-003/parquet/16/part.0.parquet
 sf-003/parquet/16/part.1.parquet
 
 KATANA_DEFAULT_LABEL=
-creationDate:IGNORE|:START_ID(Person)|:END_ID(Post)
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Post)
 sf-003/parquet/21/part.0.parquet
 sf-003/parquet/21/part.1.parquet
 
