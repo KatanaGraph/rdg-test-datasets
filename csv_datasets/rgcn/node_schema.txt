@@ -1,2 +1,2 @@
-id:ID,:TYPE
+id:ID,:TYPE,gid:INT
 nodes.csv
