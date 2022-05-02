@@ -1,0 +1,2 @@
+creationTime:datetime|id:ID(Account)|userIsSuspended:string|userIsBlacklisted:string|suspended:string|strictSuspended:string|firstName:string|lastName:string|phoneIsVerified:string|daysOnFile:float|isActive:int|accountStatusCode:string|isClosedPit:float|is_blacklisted:int|blacklistedDate:string|sumSent:float|cntSent:float|counterparty:float|cntAppr:float|cntDecl:float|cntRiskDecl1:float|amtRiskDecl:float|cntRiskDecl2:float|sumRcvd:float|cntRcvd:float|cntDist:float|cntDecl2:float|:IGNORE
+1K/nodes/inserts/NodeFileInsert_10start_1000
