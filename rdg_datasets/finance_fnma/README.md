@@ -10,6 +10,12 @@ The current import file is using the Dask importer because of some of the comple
 
 The import script is shown below until this repo supports Dask imports: 
 
+The file is located here: 
+
+```
+csv_datasets/finance_fnma/fnma_sf_2000Q1.csv
+```
+
 ```python
 
 
