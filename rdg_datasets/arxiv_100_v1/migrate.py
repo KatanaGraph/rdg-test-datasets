@@ -6,7 +6,7 @@ from libuprev.uprev_config import Config
 
 # vars unique to this rdg
 local_path = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
-input_storage_format_version = 1
+input_storage_format_version = 6
 
 
 def uprev(config: Config, new_storage_format_version: int) -> pathlib.Path:
