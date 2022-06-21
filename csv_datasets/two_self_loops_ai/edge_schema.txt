@@ -1,0 +1,2 @@
+src:START_ID,dst:END_ID
+two_self_loops_ai-edges.csv

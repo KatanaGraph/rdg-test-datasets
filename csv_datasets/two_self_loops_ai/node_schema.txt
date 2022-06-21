@@ -1,0 +1,2 @@
+id:ID,split:long,label:long
+two_self_loops_ai-props.csv
