@@ -1,0 +1,2 @@
+id:ID,split:long,label:long
+five_node_star_graph-props.csv
