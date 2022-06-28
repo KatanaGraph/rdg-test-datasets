@@ -1,0 +1,2 @@
+id:ID,split:long,label:long
+five_node_path_graph-props.csv
