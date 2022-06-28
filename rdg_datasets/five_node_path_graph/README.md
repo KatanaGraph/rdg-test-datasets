@@ -1,6 +1,8 @@
 This graph is a directed path graph containing five nodes, i.e., a chain of five nodes.
 
+'''
 0 -> 1 -> 2 -> 3 -> 4
+'''
 
 It has filler labels and splits that one can use it for ai purposes by adding features.
 add_features scripts is not part of this dataset; one can refer to "add_features.py"
