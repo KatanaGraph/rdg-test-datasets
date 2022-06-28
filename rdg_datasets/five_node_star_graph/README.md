@@ -1,11 +1,11 @@
 This graph is a directed star graph containing five nodes.
 
-'''
-	 2 3
-	 ^ ^
-	 |/
+```
+     2 3
+     ^ ^
+     |/
 1 <- 0 -> 4
-'''
+```
 
 It has filler labels and splits that one can use it for ai purposes by adding features.
 add_features scripts is not part of this dataset; one can refer to "add_features.py"
