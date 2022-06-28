@@ -1,4 +1,10 @@
-This graph is a star graph containing five nodes.
+This graph is a directed star graph containing five nodes.
+
+     2 3
+	 ^ ^
+	 |/
+1 <- 0 -> 4
+
 It has filler labels and splits that one can use it for ai purposes by adding features.
 add_features scripts is not part of this dataset; one can refer to "add_features.py"
 and "README.md" in "../two_self_loops_ai" to do similar.

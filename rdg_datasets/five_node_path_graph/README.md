@@ -1,4 +1,4 @@
-This graph is a path graph containing five nodes, i.e., a chain of five nodes.
+This graph is a directed path graph containing five nodes, i.e., a chain of five nodes.
 
 0 -> 1 -> 2 -> 3 -> 4
 
