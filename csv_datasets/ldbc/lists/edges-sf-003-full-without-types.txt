@@ -1,102 +1,160 @@
-:START_ID(Organisation)|:END_ID(Place)|:TYPE
-sf-003/static/organisation_isLocatedIn_place/part-00000-12daa980-5ea9-430c-8afa-3e4cd321a96d-c000.csv.split_0
-sf-003/static/organisation_isLocatedIn_place/part-00000-12daa980-5ea9-430c-8afa-3e4cd321a96d-c000.csv.split_1
 
-:START_ID(Place)|:END_ID(Place)|:TYPE
-sf-003/static/place_isPartOf_place/part-00000-1e189781-e586-47d9-ba18-8e2215d2cd9e-c000.csv.split_0
-sf-003/static/place_isPartOf_place/part-00000-1e189781-e586-47d9-ba18-8e2215d2cd9e-c000.csv.split_1
+KATANA_DEFAULT_LABEL=IS_SUBCLASS_OF
+:START_ID(TagClass)|:END_ID(TagClass)
+sf-0.003/static/TagClass_isSubclassOf_TagClass/part-00000-46006200-d966-42b1-ba9a-9e7385f9a2bf-c000.csv
 
-:START_ID(Tag)|:END_ID(TagClass)|:TYPE
-sf-003/static/tag_hasType_tagclass/part-00000-0e79b266-fdeb-45c9-bc07-0df894854dc9-c000.csv.split_0
-sf-003/static/tag_hasType_tagclass/part-00000-0e79b266-fdeb-45c9-bc07-0df894854dc9-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_TYPE
+:START_ID(Tag)|:END_ID(TagClass)
+sf-0.003/static/Tag_hasType_TagClass/part-00000-57bee07d-82bb-4210-a92a-fd05d21353b6-c000.csv
 
-:START_ID(TagClass)|:END_ID(TagClass)|:TYPE
-sf-003/static/tagclass_isSubclassOf_tagclass/part-00000-3a05ed0e-440f-4389-bdd2-7ecabccdedc7-c000.csv.split_0
-sf-003/static/tagclass_isSubclassOf_tagclass/part-00000-3a05ed0e-440f-4389-bdd2-7ecabccdedc7-c000.csv.split_1
+KATANA_DEFAULT_LABEL=IS_LOCATED_IN
+:START_ID(Organisation)|:END_ID(Place)
+sf-0.003/static/Organisation_isLocatedIn_Place/part-00000-8b2359bc-878c-4051-8cd5-ed861bdedf9b-c000.csv
 
-creationDate|:START_ID(Comment)|:END_ID(Person)|:TYPE
-sf-003/dynamic/comment_hasCreator_person/part-00000-6fabcea1-6ec8-4944-a25d-c8af3a1810fd-c000.csv.split_0
-sf-003/dynamic/comment_hasCreator_person/part-00000-6fabcea1-6ec8-4944-a25d-c8af3a1810fd-c000.csv.split_1
+KATANA_DEFAULT_LABEL=IS_PART_OF
+:START_ID(Place)|:END_ID(Place)
+sf-0.003/static/Place_isPartOf_Place/part-00000-905a8863-a9d6-48a4-8868-5d91dd75a161-c000.csv
 
-creationDate|:START_ID(Comment)|:END_ID(Tag)|:TYPE
-sf-003/dynamic/comment_hasTag_tag/part-00000-17cded5e-b442-4075-97c9-51eb700574b5-c000.csv.split_0
-sf-003/dynamic/comment_hasTag_tag/part-00000-17cded5e-b442-4075-97c9-51eb700574b5-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_CREATOR
+creationDate:DATETIME|:START_ID(Comment)|:END_ID(Person)
+sf-0.003/dynamic/Comment_hasCreator_Person/part-00000-43f89186-0690-49e4-97c9-0344cfd86b24-c000.csv
 
-creationDate|:START_ID(Comment)|:END_ID(Place)|:TYPE
-sf-003/dynamic/comment_isLocatedIn_place/part-00000-b73c3da6-ab3b-4cc1-b5c1-39914cbb9f71-c000.csv.split_0
-sf-003/dynamic/comment_isLocatedIn_place/part-00000-b73c3da6-ab3b-4cc1-b5c1-39914cbb9f71-c000.csv.split_1
+KATANA_DEFAULT_LABEL=IS_LOCATED_IN
+creationDate:DATETIME|:START_ID(Comment)|:END_ID(Place)
+sf-0.003/dynamic/Comment_isLocatedIn_Place/part-00000-e43e85a4-6409-4cfe-a440-b9f35acb7db0-c000.csv
 
-creationDate|:START_ID(Comment)|:END_ID(Comment)|:TYPE
-sf-003/dynamic/comment_replyOf_comment/part-00000-72df4522-f48d-424c-9d01-11bfe0bc7cea-c000.csv.split_0
-sf-003/dynamic/comment_replyOf_comment/part-00000-72df4522-f48d-424c-9d01-11bfe0bc7cea-c000.csv.split_1
+KATANA_DEFAULT_LABEL=REPLY_OF
+creationDate:DATETIME|:START_ID(Comment)|:END_ID(Comment)
+sf-0.003/dynamic/Comment_replyOf_Comment/part-00000-ccbb0620-5571-48fe-9531-413339c4c8ad-c000.csv
 
-creationDate|:START_ID(Comment)|:END_ID(Post)|:TYPE
-sf-003/dynamic/comment_replyOf_post/part-00000-6bee34cb-0e59-454b-a96f-01bb8c448f42-c000.csv.split_0
-sf-003/dynamic/comment_replyOf_post/part-00000-6bee34cb-0e59-454b-a96f-01bb8c448f42-c000.csv.split_1
+KATANA_DEFAULT_LABEL=REPLY_OF
+creationDate:DATETIME|:START_ID(Comment)|:END_ID(Post)
+sf-0.003/dynamic/Comment_replyOf_Post/part-00000-10e53a88-363c-4944-967d-87f2d54a8236-c000.csv
 
-creationDate|:START_ID(Forum)|:END_ID(Post)|:TYPE
-sf-003/dynamic/forum_containerOf_post/part-00000-8e2eab71-bd45-48cb-b856-f62243cd1970-c000.csv.split_0
-sf-003/dynamic/forum_containerOf_post/part-00000-8e2eab71-bd45-48cb-b856-f62243cd1970-c000.csv.split_1
+KATANA_DEFAULT_LABEL=CONTAINER_OF
+creationDate:DATETIME|:START_ID(Forum)|:END_ID(Post)
+sf-0.003/dynamic/Forum_containerOf_Post/part-00000-b07f0063-21d9-4e98-853e-8a6b185ea17d-c000.csv
 
-creationDate|:START_ID(Forum)|:END_ID(Person)|:TYPE
-sf-003/dynamic/forum_hasMember_person/part-00000-808cfe18-6222-4e80-8eb7-6805821de22e-c000.csv.split_0
-sf-003/dynamic/forum_hasMember_person/part-00000-808cfe18-6222-4e80-8eb7-6805821de22e-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_MEMBER
+creationDate:DATETIME|:START_ID(Forum)|:END_ID(Person)
+sf-0.003/dynamic/Forum_hasMember_Person/part-00000-e8297a7d-9da8-4781-838a-26f85dd0b120-c000.csv
 
-creationDate|:START_ID(Forum)|:END_ID(Person)|:TYPE
-sf-003/dynamic/forum_hasModerator_person/part-00000-fb887ce0-a0d5-47c9-b013-ae8aa162462e-c000.csv.split_0
-sf-003/dynamic/forum_hasModerator_person/part-00000-fb887ce0-a0d5-47c9-b013-ae8aa162462e-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_MODERATOR
+creationDate:DATETIME|:START_ID(Forum)|:END_ID(Person)
+sf-0.003/dynamic/Forum_hasModerator_Person/part-00000-3b2da241-668e-4819-b370-8b9f38d9513f-c000.csv
 
-creationDate|:START_ID(Forum)|:END_ID(Tag)|:TYPE
-sf-003/dynamic/forum_hasTag_tag/part-00000-99e3e635-b013-4902-aad3-03c456b0d52c-c000.csv.split_0
-sf-003/dynamic/forum_hasTag_tag/part-00000-99e3e635-b013-4902-aad3-03c456b0d52c-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_TAG
+creationDate:DATETIME|:START_ID(Forum)|:END_ID(Tag)
+sf-0.003/dynamic/Forum_hasTag_Tag/part-00000-675b7fb7-176c-4beb-ab4d-7e64dea4e892-c000.csv
 
-creationDate|:START_ID(Person)|:END_ID(Email)|:TYPE
-sf-003/dynamic/person_email_emailaddress/manually_transformed_2021_03_04.csv.split_0
-sf-003/dynamic/person_email_emailaddress/manually_transformed_2021_03_04.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_INTEREST
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Tag)
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00000-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00001-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00002-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00003-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00004-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00005-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00006-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00007-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00008-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00009-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00010-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00011-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00012-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00013-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
+sf-0.003/dynamic/Person_hasInterest_Tag/part-00014-d4ea5ecf-5833-4e06-9588-23df46dcea24-c000.csv
 
-creationDate|:START_ID(Person)|:END_ID(Tag)|:TYPE
-sf-003/dynamic/person_hasInterest_tag/part-00000-ac53f591-3322-4242-a3fe-fcadbf18cd73-c000.csv.split_0
-sf-003/dynamic/person_hasInterest_tag/part-00000-ac53f591-3322-4242-a3fe-fcadbf18cd73-c000.csv.split_1
+KATANA_DEFAULT_LABEL=IS_LOCATED_IN
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Place)
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00000-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00001-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00002-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00003-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00004-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00005-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00006-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00007-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00008-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00009-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00010-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00011-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00012-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00013-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00014-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
+sf-0.003/dynamic/Person_isLocatedIn_Place/part-00015-cc301033-2cd0-4094-b5cd-c85099d3f7ed-c000.csv
 
-creationDate|:START_ID(Person)|:END_ID(Place)|:TYPE
-sf-003/dynamic/person_isLocatedIn_place/part-00000-1542b788-2a72-4533-8625-cc2806efb2fa-c000.csv.split_0
-sf-003/dynamic/person_isLocatedIn_place/part-00000-1542b788-2a72-4533-8625-cc2806efb2fa-c000.csv.split_1
+KATANA_DEFAULT_LABEL=KNOWS
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Person)
+sf-0.003/dynamic/Person_knows_Person/part-00000-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00001-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00002-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00003-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00004-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00005-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00006-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00007-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00008-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00009-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00011-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-0.003/dynamic/Person_knows_Person/part-00013-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
 
-creationDate|:START_ID(Person)|:END_ID(Person)|:TYPE
-sf-003/dynamic/person_knows_person/part-00000-ca1e15f9-6b36-4e63-a024-24c0391e66d2-c000.csv.split_0
-sf-003/dynamic/person_knows_person/part-00000-ca1e15f9-6b36-4e63-a024-24c0391e66d2-c000.csv.split_1
+KATANA_DEFAULT_LABEL=LIKES
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Comment)
+sf-0.003/dynamic/Person_likes_Comment/part-00000-825902b9-7525-4da5-ad24-9864bdc64f5c-c000.csv
 
-# TODO(thunt) revisit this, data has "false" as the person id
-#creationDate|:START_ID(Person)|:END_ID(Comment)|:TYPE
-#sf-003/dynamic/person_likes_comment/part-00000-8bc522f3-fb9a-40ad-a986-0e8234b3eae3-c000.csv.split_0
-#sf-003/dynamic/person_likes_comment/part-00000-8bc522f3-fb9a-40ad-a986-0e8234b3eae3-c000.csv.split_1
+KATANA_DEFAULT_LABEL=LIKES
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Post)
+sf-0.003/dynamic/Person_likes_Post/part-00000-292079ad-c06d-4892-af98-870990fe0331-c000.csv
 
-creationDate|:START_ID(Person)|:END_ID(Post)|:TYPE
-sf-003/dynamic/person_likes_post/part-00000-42cce85f-f27a-40d3-8c65-69f139ffd456-c000.csv.split_0
-sf-003/dynamic/person_likes_post/part-00000-42cce85f-f27a-40d3-8c65-69f139ffd456-c000.csv.split_1
-
-creationDate|:START_ID(Person)|:END_ID(Language)|:TYPE
-sf-003/dynamic/person_speaks_language/manually_transformed_2021_03_04.csv.split_0
-sf-003/dynamic/person_speaks_language/manually_transformed_2021_03_04.csv.split_1
-
-creationDate|:START_ID(Person)|:END_ID(Organisation)|classYear:LONG|:TYPE
-sf-003/dynamic/person_studyAt_organisation/part-00000-2156f71d-0672-4640-bb09-0fae5876122e-c000.csv.split_0
-sf-003/dynamic/person_studyAt_organisation/part-00000-2156f71d-0672-4640-bb09-0fae5876122e-c000.csv.split_1
+KATANA_DEFAULT_LABEL=STUDY_AT
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Organisation)|classYear:LONG
+sf-0.003/dynamic/Person_studyAt_University/part-00000-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00001-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00002-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00003-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00004-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00005-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00006-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00007-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00008-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00010-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00011-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00012-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00013-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00014-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
+sf-0.003/dynamic/Person_studyAt_University/part-00015-2ffde6cf-c9ca-47ae-9312-bc17b5f607e4-c000.csv
 
 KATANA_DEFAULT_LABEL=WORK_AT
-creationDate|:START_ID(Person)|:END_ID(Organisation)|workFrom:LONG|:IGNORE
-sf-003/dynamic/person_workAt_organisation/part-00000-274143b8-ede7-4a41-b8c8-10fea2aa3056-c000.csv.split_0
-sf-003/dynamic/person_workAt_organisation/part-00000-274143b8-ede7-4a41-b8c8-10fea2aa3056-c000.csv.split_1
+creationDate:DATETIME|:START_ID(Person)|:END_ID(Organisation)|workFrom:LONG
+sf-0.003/dynamic/Person_workAt_Company/part-00000-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00001-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00002-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00003-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00004-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00005-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00006-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00007-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00008-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00009-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00010-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00011-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00013-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00014-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-0.003/dynamic/Person_workAt_Company/part-00015-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
 
-KATANA_DEFAULT_LABEL=
-creationDate|:START_ID(Post)|:END_ID(Person)|:TYPE
-sf-003/dynamic/post_hasCreator_person/part-00000-10cb9ef3-dc6c-43e4-b6e7-a2179dcd810c-c000.csv.split_0
-sf-003/dynamic/post_hasCreator_person/part-00000-10cb9ef3-dc6c-43e4-b6e7-a2179dcd810c-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_CREATOR
+creationDate:DATETIME|:START_ID(Post)|:END_ID(Person)
+sf-0.003/dynamic/Post_hasCreator_Person/part-00000-e43ecdeb-2d05-4965-b022-9f790cdd6b20-c000.csv
 
-creationDate|:START_ID(Post)|:END_ID(Tag)|:TYPE
-sf-003/dynamic/post_hasTag_tag/part-00000-8f918eb1-beed-428f-b68a-18f1c5e3d1d0-c000.csv.split_0
-sf-003/dynamic/post_hasTag_tag/part-00000-8f918eb1-beed-428f-b68a-18f1c5e3d1d0-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_TAG
+creationDate:DATETIME|:START_ID(Comment)|:END_ID(Tag)
+sf-0.003/dynamic/Comment_hasTag_Tag/part-00000-3f67da43-74ab-4d38-a6a4-b170b6334a36-c000.csv
 
-creationDate|:START_ID(Post)|:END_ID(Place)|:TYPE
-sf-003/dynamic/post_isLocatedIn_place/part-00000-d2a7a9ca-9711-48ec-b36d-3089c9a62f09-c000.csv.split_0
-sf-003/dynamic/post_isLocatedIn_place/part-00000-d2a7a9ca-9711-48ec-b36d-3089c9a62f09-c000.csv.split_1
+KATANA_DEFAULT_LABEL=HAS_TAG
+creationDate:DATETIME|:START_ID(Post)|:END_ID(Tag)
+sf-0.003/dynamic/Post_hasTag_Tag/part-00000-5ca30ed0-1b4e-49b9-845d-a2c61c5e17ca-c000.csv
+
+KATANA_DEFAULT_LABEL=IS_LOCATED_IN
+creationDate:DATETIME|:START_ID(Post)|:END_ID(Place)
+sf-0.003/dynamic/Post_isLocatedIn_Place/part-00000-e18b524a-0730-417f-be50-16c241a9a4f8-c000.csv
