@@ -3,7 +3,7 @@ import pathlib
 import subprocess
 
 import csv_datasets
-from libuprev import rdg_import
+from libuprev import rdg_import, constants, rdg_generate
 from libuprev.uprev_config import Config
 
 local_path = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
@@ -30,16 +30,12 @@ def uprev(config: Config, new_storage_format_version: int) -> pathlib.Path:
         import_args=import_args,
     )
 
-    # path to the built Katana python environment
-    python_env_path = config.build_dir / "python_env.sh"
     # path to feature adding script in an enterprise build
     script_path = (
-        config.build_dir / "katana_enterprise_python_build/python/test/datagen/many_self_loops_w_sink_ai_features.py"
+        config.build_dir / constants.TOOLS.get("katana_enterprise_python", None) / "python/test/datagen/many_self_loops_w_sink_ai_features.py"
     )
 
-    # run script to add features to the RDG (in-place)
-    cmd = [python_env_path, "python3", script_path, return_path.absolute()]
-    subprocess.run(cmd, check=True)
-
-    # returns the original path as required by uprev
-    return return_path
+    return rdg_generate.generate_python_enterprise_tool(config=config,
+                                                        in_path=return_path,
+                                                        out_path=None,
+                                                        python_script_path=script_path, generate_args=[])
