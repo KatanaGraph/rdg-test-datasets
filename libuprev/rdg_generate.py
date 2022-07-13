@@ -68,3 +68,44 @@ def generate_partition_dist_tool(
     env["AWS_EC2_METADATA_DISABLED"] = str(aws_disabled)
 
     subprocess.run(cmd, check=True, env=env)
+
+
+# call a custom script from the katana enterprise repo
+# if out_path is None, the tool works in-place on the in_path
+def generate_python_enterprise_tool(config: Config,
+                                            in_path: pathlib.Path,
+                                            out_path: pathlib.Path,
+                                            python_script_path: pathlib.Path,
+                                            generate_args: list[str],
+                                            aws_disabled: bool = True,
+):
+    tool_name = "katana_enterprise_python"
+    tool_path = config.build_dir / constants.TOOLS.get(tool_name, None)
+
+    # path to the built Katana python environment
+    python_env_path = config.build_dir / "python_env.sh"
+
+    fs.ensure_dir("build", config.build_dir)
+    fs.ensure_file("python env script", python_env_path, "have you built the python library? Run 'make {}' in {}".format(tool_name, config.build_dir) )
+    fs.ensure_file(
+        "python tool script", python_script_path, "have you built it?. Run 'make {}' in {}".format(tool_name, config.build_dir)
+    )
+
+
+    return_path = out_path
+    if out_path == None:
+        out_path = ""
+        return_path = in_path
+
+    # create command in the form "python_env.sh python3 <script-path> <input-rdg-dir> <output-rdg-dir> <additional-args>"
+    cmd = (
+        [python_env_path, "python3", python_script_path, in_path, out_path]
+        + generate_args
+    )
+
+    env = os.environ.copy()
+    env["AWS_EC2_METADATA_DISABLED"] = str(aws_disabled)
+
+    subprocess.run(cmd, check=True, env=env)
+
+    return return_path

@@ -4,4 +4,5 @@ TOOLS = {
     "uprev-rdg-storage-format-version-worker": "external/katana/tools/uprev-rdg-storage-format-version-worker/uprev-rdg-storage-format-version-worker",
     "partition-dist": "lonestar/analytics/distributed/partition/partition-dist",
     "csv-import": "tools/import/csv-import",
+    "katana_enterprise_python" : "katana_enterprise_python_build",
 }
