@@ -19,6 +19,12 @@ def ensure_dir(name: str, path: pathlib.Path, message: str = None):
         else:
             raise RuntimeError("{} directory does not exist at {}: {}".format(name, path, message))
 
+def ensure_exists(name: str, path: pathlib.Path, message: str = None):
+    if not path.exists():
+        if message is None:
+            raise RuntimeError("{} does not exist at {}".format(name, path))
+        else:
+            raise RuntimeError("{} does not exist at {}: {}".format(name, path, message))
 
 def ensure_empty(name: str, path: pathlib.Path, message: str = None):
     if path.exists():
