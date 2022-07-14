@@ -123,7 +123,9 @@ def cli_rdgs(
     config = Config()
     config.build_dir = pathlib.Path(build_dir)
     fs.ensure_build_dir(config.build_dir)
-    if not tools.in_tree_tools_built(config.build_dir):
+    try:
+        tools.in_tree_tools_built(config.build_dir)
+    except Exception as e:
         raise RuntimeError(
             "Not all required tools are available, please run `./uprev build_tools --build_dir=<katana-enterprise build dir>`"
         )

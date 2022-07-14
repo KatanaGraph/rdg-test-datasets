@@ -92,16 +92,14 @@ def generate_python_enterprise_tool(config: Config,
     )
 
 
+    # create command in the form "python_env.sh python3 <script-path> <input-rdg-dir> <output-rdg-dir> <additional-args>"
+    cmd = [python_env_path, "python3", python_script_path, in_path]
     return_path = out_path
     if out_path == None:
-        out_path = ""
         return_path = in_path
-
-    # create command in the form "python_env.sh python3 <script-path> <input-rdg-dir> <output-rdg-dir> <additional-args>"
-    cmd = (
-        [python_env_path, "python3", python_script_path, in_path, out_path]
-        + generate_args
-    )
+    else:
+        cmd += out_path
+    cmd += generate_args
 
     env = os.environ.copy()
     env["AWS_EC2_METADATA_DISABLED"] = str(aws_disabled)
