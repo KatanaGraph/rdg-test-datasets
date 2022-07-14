@@ -1,8 +1,8 @@
 This graph is a 3 node graph: 3 self loops on one node, 9 self loops on another 
 the other, and one node acting as a sink where the other 2 nodes have an outgoing edge
-to it. "ai" suffix because it has filler labels, splits, and features.
+to it. "ai" suffix because it has labels, splits, and features.
 The features in question are 2 length vectors: 1,1 for the self loop nodes and 
-and 5,5 for the sink node.
+and 5,5 for the sink node. Each node's label is its ID.
 
 The point of this file is to test arbitrary fan-out and different degree nodes during
 sampling as well as in vs out-edge sampling (the sink node is ignored if you're sampling
