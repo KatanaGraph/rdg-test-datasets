@@ -8,7 +8,7 @@
 
 
 ### List of folks that should be notified of this PR. Please don't remove these. 
-@e-mcginnis
+@scober
 @aneeshdurg
 
 <!-- Put your PR content below here -->
