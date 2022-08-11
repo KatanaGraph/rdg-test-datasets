@@ -4,7 +4,7 @@ import os
 import pathlib
 import subprocess
 
-from libuprev import constants, fs
+from libuprev import constants, fs, rdg_sfv
 from libuprev.uprev_config import Config
 
 
@@ -14,16 +14,21 @@ def generate_partition_dist(
     config: Config,
     input_rdg_path: pathlib.Path,
     output_rdg_path: pathlib.Path,
-    storage_format_version: int,
+    rdg_storage_format_version: str,
     num_partitions: int,
     generate_args: list[str],
 ) -> pathlib.Path:
 
-    in_path = input_rdg_path / constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
-    out_path = output_rdg_path / constants.STORAGE_FORMAT_VERSION_STR.format(storage_format_version)
+    rdg_sfv.parse_sfv(rdg_storage_format_version)
+
+    in_path = input_rdg_path / constants.RDG_STORAGE_FORMAT_VERSION_STR.format(rdg_storage_format_version)
+    out_path = output_rdg_path / constants.RDG_STORAGE_FORMAT_VERSION_STR.format(rdg_storage_format_version)
 
     fs.ensure_dir("input rdg", in_path)
     fs.ensure_empty("output rdg", out_path)
+
+    # we want to maintain all of the possible rdg format views in the test-inputs
+    generate_args.append("--output-all-views")
 
     try:
         generate_partition_dist_tool(

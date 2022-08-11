@@ -4,7 +4,7 @@ import os
 import pathlib
 import subprocess
 
-from libuprev import constants, fs
+from libuprev import constants, fs, rdg_sfv
 from libuprev.uprev_config import Config
 
 
@@ -13,14 +13,16 @@ from libuprev.uprev_config import Config
 def import_(
     config: Config,
     rdg_path: pathlib.Path,
-    out_ver: int,
+    out_ver: str,
     csv_path: pathlib.Path,
     node_file: str,
     edge_file: str,
     import_args: list[str],
 ) -> pathlib.Path:
 
-    out_path = rdg_path / constants.STORAGE_FORMAT_VERSION_STR.format(out_ver)
+    rdg_sfv.parse_sfv(out_ver)
+
+    out_path = rdg_path / constants.RDG_STORAGE_FORMAT_VERSION_STR.format(out_ver)
     node_file_path = csv_path / node_file
     edge_file_path = csv_path / edge_file
 
@@ -29,6 +31,8 @@ def import_(
     fs.ensure_file("node", node_file_path)
     fs.ensure_file("edge", edge_file_path)
 
+    # we want to maintain all of the possible rdg format views in the test-inputs
+    import_args.append("--output-all-views")
     try:
         import_tool(config, out_path, csv_path, node_file_path, edge_file_path, import_args)
     except:
