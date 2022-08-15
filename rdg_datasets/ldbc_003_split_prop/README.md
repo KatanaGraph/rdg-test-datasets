@@ -11,10 +11,10 @@ HOW THIS GRAPH WAS CREATED:
     2) re-import the graph, using the `csv-datasets` repo
     you will need to slightly modify the paths to match your system
     ```
-    STORAGE_FORMAT_VERSION=storage_format_version_4
+    STORAGE_FORMAT_VERSION=storage_format_version_DLSG1.STPG9
     DATASETS_PATH=${HOME}/katana/katana-enterprise/external/katana/external/test-datasets
     AWS_EC2_METADATA_DISABLED=true
-    ./tools/import/csv-import --data-delimiter '|' --files-have-headers -t 32 --input-dir=${DATASETS_PATH}/csv_datasets/ldbc/ ${DATASETS_PATH}/csv_datasets/ldbc/lists/nodes-sf-003-full.txt ${DATASETS_PATH}/csv_datasets/ldbc/lists/edges-sf-003-full.txt ${DATASETS_PATH}/rdg_datasets/ldbc_003_split_prop/${STORAGE_FORMAT_VERSION}
+    ./tools/import/csv-import --data-delimiter '|' --files-have-headers -t 32 --input-dir=${DATASETS_PATH}/csv_datasets/ldbc/ ${DATASETS_PATH}/csv_datasets/ldbc/lists/nodes-sf-003-full.txt ${DATASETS_PATH}/csv_datasets/ldbc/lists/edges-sf-003-full.txt ${DATASETS_PATH}/rdg_datasets/ldbc_003_split_prop/${STORAGE_FORMAT_VERSION} --output-all-views
     ```
 
     it would be really nice if we could generate this in a more automated

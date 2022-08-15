@@ -1,14 +1,14 @@
 # ldbc_003_maximal
 
 a version of ldbc_003 stored with as many optional rdg data structures as possible.
-Intended to be used by tests of the rdg storage format
+Intended to be used to test the STPG rdg format
 
 # Generation
 
 Generation of this rdg purposely requires work from the user, as often the definition of what makes a "maximal" rdg
 will change between storage format versions.
 
-Before regenerating, modify `generate-maximal-storage-format-rdg/generate-maximal-storage-format-rdg.cpp` to include any new optional data structures which were added by the new storage format version. 
+Before regenerating, modify `generate-maximal-storage-format-rdg/generate-maximal-storage-format-rdg.cpp` to include any new optional data structures which were added by the new storage format version.
 
 
 ```

@@ -101,7 +101,9 @@ def validate_version(rdg: str, rdg_sfv_dict: dict, rdg_dir: pathlib.Path):
                 )
 
     validate_stpg_version(rdg, rdg_sfv_dict["stpg"], rdg_dir)
-    validate_dlsg_version(rdg, rdg_sfv_dict["dlsg"], rdg_dir)
+    if (rdg != "ldbc_003_maximal"):
+        # skip validating the dlsg for ldbc_003_maximal
+        validate_dlsg_version(rdg, rdg_sfv_dict["dlsg"], rdg_dir)
 
 @click.group()
 def cli():
