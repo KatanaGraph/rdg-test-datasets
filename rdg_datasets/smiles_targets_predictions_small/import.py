@@ -7,7 +7,7 @@ from libuprev.uprev_config import Config
 
 # vars unique to this rdg
 local_path = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
-csv_dataset = "smiles_datasets_small"
+csv_dataset = "smiles_targets_predictions_small"
 csv_path = csv_datasets.csv_dataset_dir / csv_dataset
 import_args = ["--ids-are-integers", "--files-have-headers"]
 node_file = "node_schema.txt"

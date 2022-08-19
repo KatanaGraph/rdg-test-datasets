@@ -1,8 +1,8 @@
 id:ID(Compound),smiles:string
 smiles.csv
 
-id:ID(Dataset)
-datasets.csv
+id:ID(Target)
+targets.csv
 
 id:ID(Not_Compound),smiles:string
 bad_smiles.csv

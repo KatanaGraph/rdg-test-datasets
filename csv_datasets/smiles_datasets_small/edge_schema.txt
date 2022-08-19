@@ -1,5 +1,0 @@
-:START_ID(Compound),:END_ID(Dataset),y:float
-smiles_edges.csv
-
-:START_ID(Not_Compound),:END_ID(Dataset),y:float
-bad_smiles_edges.csv
