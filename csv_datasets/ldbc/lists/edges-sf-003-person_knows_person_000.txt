@@ -1,8 +1,8 @@
 KATANA_DEFAULT_LABEL=KNOWS
 creationDate:DATETIME|:START_ID(Person)|:END_ID(Person)
-sf-0.003/dynamic/Person_knows_Person/part-00000-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
-sf-0.003/dynamic/Person_knows_Person/part-00001-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
-sf-0.003/dynamic/Person_knows_Person/part-00002-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
-sf-0.003/dynamic/Person_knows_Person/part-00003-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
-sf-0.003/dynamic/Person_knows_Person/part-00004-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
-sf-0.003/dynamic/Person_knows_Person/part-00005-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-003/dynamic/Person_knows_Person/part-00000-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-003/dynamic/Person_knows_Person/part-00001-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-003/dynamic/Person_knows_Person/part-00002-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-003/dynamic/Person_knows_Person/part-00003-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-003/dynamic/Person_knows_Person/part-00004-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
+sf-003/dynamic/Person_knows_Person/part-00005-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
