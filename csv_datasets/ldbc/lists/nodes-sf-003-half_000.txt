@@ -1,32 +1,39 @@
+
+KATANA_DEFAULT_LABEL=Organisation
 id:ID(Organisation)|:LABEL|name:STRING|url:STRING
-sf-003/static/organisation/part-00000-0c7714d5-bb09-4b50-8cf6-eed6c181f3cf-c000.csv.split_0
-sf-003/static/organisation/part-00000-0c7714d5-bb09-4b50-8cf6-eed6c181f3cf-c000.csv.split_1
+sf-003/static/Organisation/part-00000-7f44383d-f8da-47c8-a6af-25a5f2da542d-c000.csv.split_0
 
+KATANA_DEFAULT_LABEL=Place
 id:ID(Place)|name:STRING|url:STRING|:LABEL
-sf-003/static/place/part-00000-210d0718-c0dc-45df-926c-4bf5fc82dc06-c000.csv.split_0
+sf-003/static/Place/part-00000-c16729dd-16d5-456b-84ca-d0f19fa783d6-c000.csv.split_0
 
-id:ID(Tag)|name:STRING|url:STRING
-sf-003/static/tag/part-00000-c7fb9898-ca33-4219-b197-f02b0e09e454-c000.csv.split_0
-
+KATANA_DEFAULT_LABEL=TagClass
 id:ID(TagClass)|name:STRING|url:STRING
-sf-003/static/tagclass/part-00000-32cf3008-4e5e-4d0e-9b74-d41e26c2df2d-c000.csv.split_0
+sf-003/static/TagClass/part-00000-6a26364a-69f6-47d5-87a9-e59a5ebb48bc-c000.csv.split_0
 
+KATANA_DEFAULT_LABEL=Tag
+id:ID(Tag)|name:STRING|url:STRING
+sf-003/static/Tag/part-00000-be1f364b-3428-4d0b-8e87-143f4bd2c8bf-c000.csv.split_0
+
+KATANA_DEFAULT_LABEL=Message
 creationDate:DATETIME|id:ID(Comment)|locationIP:STRING|browserUsed:STRING|content:STRING|length:LONG
-sf-003/dynamic/comment/part-00000-567ad257-a2d9-4500-b34f-9fe7540687b6-c000.csv.split_0
+sf-003/dynamic/Comment/part-00000-ea432755-894c-4e09-bea3-e7a85e691d52-c000.csv.split_0
 
+KATANA_DEFAULT_LABEL=Forum
 creationDate:DATETIME|id:ID(Forum)|title:STRING
-sf-003/dynamic/forum/part-00000-8fd17096-3eda-4e27-84e0-bc9ed0a3932d-c000.csv.split_0
+sf-003/dynamic/Forum/part-00000-f80cc3ea-0251-4111-adc3-2b6dbce5bfe2-c000.csv.split_0
 
-creationDate:DATETIME|id:ID(Person)|firstName:STRING|lastName:STRING|gender:STRING|birthday:DATE|locationIP:STRING|browserUsed:STRING
-sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_0
-sf-003/dynamic/person/part-00000-bd372348-c92b-4527-8346-0d1433b492f5-c000.csv.split_1
+KATANA_DEFAULT_LABEL=Person
+creationDate:DATETIME|id:ID(Person)|firstName:STRING|lastName:STRING|gender:STRING|birthday:DATE|locationIP:STRING|browserUsed:STRING|speaks:STRING|email:STRING
+sf-003/dynamic/Person/part-00000-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00001-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00002-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00003-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00004-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00005-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00006-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00007-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
 
-# TODO(thunt) take another look at forumID here, was missing from generator's Neo4j header
-creationDate:DATETIME|id:ID(Post)|imageFile:STRING|locationIP:STRING|browserUsed:STRING|language:STRING|content:STRING|length:LONG|forumID:IGNORE
-sf-003/dynamic/post/part-00000-543736fe-4a79-4aa0-8df9-bc94915c77c4-c000.csv.split_0
-
-id:ID(Language)|name:STRING
-sf-003/static/language/manually_created_2021_03_04.csv.split_0
-
-id:ID(Email)|email:STRING
-sf-003/dynamic/emailaddress/manually_created_2021_03_04.csv.split_0
+KATANA_DEFAULT_LABEL=Message
+creationDate:DATETIME|id:ID(Post)|imageFile:STRING|locationIP:STRING|browserUsed:STRING|language:STRING|content:STRING|length:LONG|:IGNORE
+sf-003/dynamic/Post/part-00000-e99d9b79-e000-4cdf-8924-ca71ee3c988b-c000.csv.split_0
