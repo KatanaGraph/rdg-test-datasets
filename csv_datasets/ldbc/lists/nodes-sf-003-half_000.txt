@@ -2,6 +2,7 @@
 KATANA_DEFAULT_LABEL=Organisation
 id:ID(Organisation)|:LABEL|name:STRING|url:STRING
 sf-003/static/Organisation/part-00000-7f44383d-f8da-47c8-a6af-25a5f2da542d-c000.csv.split_0
+sf-003/static/Organisation/part-00000-7f44383d-f8da-47c8-a6af-25a5f2da542d-c000.csv.split_1
 
 KATANA_DEFAULT_LABEL=Place
 id:ID(Place)|name:STRING|url:STRING|:LABEL
@@ -33,6 +34,14 @@ sf-003/dynamic/Person/part-00004-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
 sf-003/dynamic/Person/part-00005-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
 sf-003/dynamic/Person/part-00006-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
 sf-003/dynamic/Person/part-00007-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00008-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00009-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00010-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00011-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00012-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00013-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00014-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
+sf-003/dynamic/Person/part-00015-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
 
 KATANA_DEFAULT_LABEL=Message
 creationDate:DATETIME|id:ID(Post)|imageFile:STRING|locationIP:STRING|browserUsed:STRING|language:STRING|content:STRING|length:LONG|:IGNORE

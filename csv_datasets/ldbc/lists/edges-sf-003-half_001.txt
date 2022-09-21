@@ -78,10 +78,6 @@ sf-003/dynamic/Person_knows_Person/part-00011-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d
 sf-003/dynamic/Person_knows_Person/part-00013-06c5a54c-e4c8-4585-8dbd-7bb80f2e7d04-c000.csv
 
 KATANA_DEFAULT_LABEL=LIKES
-creationDate:DATETIME|:START_ID(Person)|:END_ID(Comment)
-sf-003/dynamic/Person_likes_Comment/part-00000-825902b9-7525-4da5-ad24-9864bdc64f5c-c000.csv.split_1
-
-KATANA_DEFAULT_LABEL=LIKES
 creationDate:DATETIME|:START_ID(Person)|:END_ID(Post)
 sf-003/dynamic/Person_likes_Post/part-00000-292079ad-c06d-4892-af98-870990fe0331-c000.csv.split_1
 
@@ -97,6 +93,14 @@ sf-003/dynamic/Person_studyAt_University/part-00015-2ffde6cf-c9ca-47ae-9312-bc17
 
 KATANA_DEFAULT_LABEL=WORK_AT
 creationDate:IGNORE|:START_ID(Person)|:END_ID(Organisation)|workFrom:LONG
+sf-003/dynamic/Person_workAt_Company/part-00000-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00001-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00002-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00003-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00004-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00005-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00006-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
+sf-003/dynamic/Person_workAt_Company/part-00007-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
 sf-003/dynamic/Person_workAt_Company/part-00008-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
 sf-003/dynamic/Person_workAt_Company/part-00009-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
 sf-003/dynamic/Person_workAt_Company/part-00010-d1147be3-11f0-410e-9ab9-f90fcf7d02a7-c000.csv
