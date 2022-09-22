@@ -1,8 +1,3 @@
-
-KATANA_DEFAULT_LABEL=Organisation
-id:ID(Organisation)|:LABEL|name:STRING|url:STRING
-sf-003/static/Organisation/part-00000-7f44383d-f8da-47c8-a6af-25a5f2da542d-c000.csv.split_1
-
 KATANA_DEFAULT_LABEL=Place
 id:ID(Place)|name:STRING|url:STRING|:LABEL
 sf-003/static/Place/part-00000-c16729dd-16d5-456b-84ca-d0f19fa783d6-c000.csv.split_1
@@ -22,17 +17,6 @@ sf-003/dynamic/Comment/part-00000-ea432755-894c-4e09-bea3-e7a85e691d52-c000.csv.
 KATANA_DEFAULT_LABEL=Forum
 creationDate:DATETIME|id:ID(Forum)|title:STRING
 sf-003/dynamic/Forum/part-00000-f80cc3ea-0251-4111-adc3-2b6dbce5bfe2-c000.csv.split_1
-
-KATANA_DEFAULT_LABEL=Person
-creationDate:DATETIME|id:ID(Person)|firstName:STRING|lastName:STRING|gender:STRING|birthday:DATE|locationIP:STRING|browserUsed:STRING|speaks:STRING|email:STRING
-sf-003/dynamic/Person/part-00008-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00009-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00010-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00011-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00012-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00013-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00014-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
-sf-003/dynamic/Person/part-00015-18fa0376-2cfb-4b82-a7a6-e136cd266801-c000.csv
 
 KATANA_DEFAULT_LABEL=Message
 creationDate:DATETIME|id:ID(Post)|imageFile:STRING|locationIP:STRING|browserUsed:STRING|language:STRING|content:STRING|length:LONG|:IGNORE
