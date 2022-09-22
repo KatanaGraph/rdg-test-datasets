@@ -1,0 +1,5 @@
+Place1.id|Place2.id|type
+0|4|IS_PART_OF
+1|4|IS_PART_OF
+2|0|IS_PART_OF
+3|0|IS_PART_OF
