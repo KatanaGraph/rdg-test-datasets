@@ -1,0 +1,5 @@
+:START_ID(Account)|:END_ID(Account)|type:TYPE|date:datetime
+edges/FriendConA/FileFriendA_0
+edges/FriendConB/FileFriendB_0
+edges/AssetConA/FileAssetA_0
+edges/AssetConB/FileAssetB_0
