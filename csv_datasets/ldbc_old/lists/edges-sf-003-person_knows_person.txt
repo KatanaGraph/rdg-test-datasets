@@ -1,3 +1,0 @@
-creationDate:DATETIME|:START_ID(Person)|:END_ID(Person)|:TYPE
-sf-003/dynamic/person_knows_person/part-00000-ca1e15f9-6b36-4e63-a024-24c0391e66d2-c000.csv.split_0
-sf-003/dynamic/person_knows_person/part-00000-ca1e15f9-6b36-4e63-a024-24c0391e66d2-c000.csv.split_1
