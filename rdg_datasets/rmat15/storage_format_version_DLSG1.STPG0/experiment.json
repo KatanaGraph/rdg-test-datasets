@@ -1,0 +1,30 @@
+{
+    "artifact_id": "2958416941",
+    "btimestamp": 1662004788808,
+    "cluster": "katana-internal21",
+    "compute_node_machine_type": "n2-highmem-32",
+    "datetime": "2022-09-01 04:00:33.212781",
+    "db": "rmat15",
+    "etimestamp": 1662004922652,
+    "graph_id": "Ae2gY2jKL9HpZ2tAhA3RdkiKQ3Afw94NcfxdXUHfGDAxe",
+    "katana_date": "2022-08-30 17:52:39",
+    "katana_deploy_sha": null,
+    "katana_sha": "ca08d41228cdffa727f14960c6e4e8edf828a106",
+    "katana_tools_sha": "4e31f0ba5cd81af31e8fbf9466d29a99ed099fcb",
+    "num_edges": 524288,
+    "num_nodes": 32754,
+    "num_partitions": 1,
+    "provider": "gcp",
+    "queries": {
+        "export": {
+            "outcome": "pass",
+            "time": 6258
+        },
+        "import": {
+            "outcome": "pass",
+            "time": 12881
+        }
+    },
+    "status": "pass",
+    "version": "0.5.0+20220830T175239Z.ca08d4122.dev"
+}
