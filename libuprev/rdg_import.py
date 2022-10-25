@@ -63,6 +63,7 @@ def import_tool(
         edge_file_path.absolute(),
         out_path.absolute(),
         "--input-dir={}/".format(input_dir.absolute()),
+        "--output-legacy",
     ] + import_args
 
     env = os.environ.copy()
