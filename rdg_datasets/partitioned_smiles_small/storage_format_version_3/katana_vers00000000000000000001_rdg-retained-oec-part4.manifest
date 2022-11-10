@@ -1,1 +1,0 @@
-{"lineage":{"command_line":"/home/andrew/katana-enterprise/build/bin/partition-dist smiles_small --loadAllProperties --newRDG=partitioned_smiles_small"},"magic":1263682631,"num_hosts":4,"policy_id":2,"previous_version":0,"transpose":false,"version":1}
