@@ -8,6 +8,8 @@ partitioned DLSPG1.STPG0 in the repository, so it is useful for testing.
 Which using the katana-tools dev, runs this script.
 
     https://github.com/KatanaGraph/katana-tools/blob/main/bench/katana_bench/importcsv.py
+    
+The experiment.json file has additional metadata to allow the recreation of this dataset.
 
 Because the current (12/9/22) uprev framework only supports numeric graph
 versions, we do not include any uprev/migration scripts.

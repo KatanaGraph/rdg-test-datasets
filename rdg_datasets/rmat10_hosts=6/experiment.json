@@ -1,0 +1,33 @@
+{
+    "artifact_id": "0.6.0+20221130T164956Z.913951491",
+    "btimestamp": 1670424542112,
+    "cluster": "katana-clusters-beta",
+    "compute_node_env": "SHELL=/bin/bash\nPWD=/home/gligoric\nLOGNAME=gligoric\nXDG_SESSION_TYPE=tty\nMOTD_SHOWN=pam\nHOME=/home/gligoric\nLANG=C.UTF-8\nSSH_CONNECTION=35.235.244.33 46353 1\
+0.0.0.131 22\nXDG_SESSION_CLASS=user\nTERM=dumb\nUSER=gligoric\nSHLVL=0\nXDG_SESSION_ID=6\nXDG_RUNTIME_DIR=/run/user/1035\nSSH_CLIENT=35.235.244.33 46353 22\nPATH=/usr/local/sbin:/usr/local\
+/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin\nDBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1035/bus\nSSH_TTY=/dev/pts/1\n_=/usr/bin/env",
+    "compute_node_machine_type": "n2-highmem-32",
+    "datetime": "2022-12-07 14:49:21.138401",
+    "db": "rmat10",
+    "etimestamp": 1670424577866,
+    "graph_id": "6tetSSxaWCHyabwhQoRd1hC2hQiJjaLFqZGkcuYPMJAge",
+    "katana_date": "2022-11-30 16:49:56",
+    "katana_deploy_sha": "6dbf3c609de40178c85008c2fe56c9c89b27424f",
+    "katana_sha": "913951491665ae6b676ffb92df0c575a0801470b",
+    "katana_tools_sha": "6dbf3c609de40178c85008c2fe56c9c89b27424f",
+    "num_edges": 16384,
+    "num_nodes": 1021,
+    "num_partitions": 6,
+    "provider": "gcp",
+    "queries": {
+        "export": {
+            "outcome": "pass",
+            "time": 6205
+        },
+        "import": {
+            "outcome": "pass",
+            "time": 5679
+        }
+    },
+    "status": "pass",
+    "version": "0.6.0+20221130T164956Z.913951491.dev"
+}
