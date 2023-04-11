@@ -1,0 +1,3 @@
+sourceAccount.id:START_ID(Account),destinationAccount2.id:END_ID(Account),foo:string,txId:long,date:datetime,sourceBank:string,destinationBank:string,amount:double
+e-0.csv
+

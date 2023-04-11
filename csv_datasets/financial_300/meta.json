@@ -1,0 +1,156 @@
+{
+    "annotator": "heterogeneous",
+    "batch_op": "update",
+    "datetime": "2023-02-10 18:49:38.497546",
+    "edge_max": 1500,
+    "edge_min": 1500,
+    "edge_properties": {
+        "distribution": {
+            "('Account', 'Transaction', 'Account')": [
+                "txId",
+                "date",
+                "sourceBank",
+                "destinationBank",
+                "amount"
+            ]
+        },
+        "max": 7,
+        "min": 7,
+        "precisions": {
+            "amount": 2
+        },
+        "probabilities": {},
+        "random_groups": false,
+        "types": {
+            "amount": "double",
+            "date": "DATETIME",
+            "destinationBank": "string",
+            "sourceBank": "string",
+            "txId": "long"
+        },
+        "value_ranges": {
+            "amount": [
+                1.0,
+                50000
+            ],
+            "txId": [
+                1,
+                100000
+            ]
+        },
+        "values": {}
+    },
+    "edge_types": {
+        "distribution": [
+            [
+                "Account",
+                "Transaction",
+                "Account"
+            ]
+        ],
+        "probabilities": []
+    },
+    "executors": [],
+    "graph_id": "RandShaper_kd2dz8al",
+    "index": 0,
+    "node_max": 300,
+    "node_min": 300,
+    "node_properties": {
+        "distribution": {
+            "Account": [
+                "firstName",
+                "lastName",
+                "enrollmentDate",
+                "status",
+                "state",
+                "country",
+                "amount"
+            ]
+        },
+        "max": 8,
+        "min": 8,
+        "precisions": {
+            "amount": 2
+        },
+        "probabilities": {},
+        "random_groups": false,
+        "types": {
+            "amount": "double",
+            "country": "string",
+            "enrollmentDate": "DATETIME",
+            "firstName": "string",
+            "lastName": "string",
+            "state": "string",
+            "status": "string"
+        },
+        "value_ranges": {
+            "amount": [
+                1000000,
+                100000000
+            ]
+        },
+        "values": {
+            "country": [
+                "USA"
+            ],
+            "state": [
+                "Texas",
+                "Arizona",
+                "New York",
+                "New Hampshire",
+                "Memphis",
+                "New Orleans",
+                "North Carolina",
+                "South Carolina",
+                "Illinois",
+                "Indiana",
+                "Oregon",
+                "Colorado",
+                "Wyoming",
+                "Ohio",
+                "Maryland",
+                "Minessota",
+                "Wisconsin",
+                "Arkansas",
+                "Kansas",
+                "Iowa",
+                "Nebraska",
+                "Georgia",
+                "Alabama",
+                "Florida",
+                "New Mexico",
+                "Oklahoma",
+                "North Dakota",
+                "South Dakota",
+                "Utah",
+                "Idaho",
+                "Washington",
+                "Missouri",
+                "Maine",
+                "Virginia",
+                "Louisiana",
+                "Kentucky",
+                "Tenessee"
+            ]
+        }
+    },
+    "node_types": {
+        "distribution": [
+            "Account"
+        ],
+        "probabilities": []
+    },
+    "num_edges": 1500,
+    "num_executors": "1",
+    "num_instances": 1,
+    "num_nodes": 300,
+    "output_dir": "/build/generated_graphs",
+    "shaper": "RandShaper",
+    "storage_format": [
+        "CsvStorer"
+    ],
+    "summarize_results": true,
+    "symmetric": false,
+    "typed_schema": true,
+    "user": "root"
+}
