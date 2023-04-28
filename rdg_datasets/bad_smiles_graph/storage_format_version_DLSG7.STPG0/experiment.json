@@ -1,0 +1,33 @@
+{
+    "btimestamp": 1682704116577,
+    "datetime": "2023-04-28 17:48:38.921815",
+    "db": "bad_smiles",
+    "etimestamp": 1682704265671,
+    "graph_id": "3wNRaJ83yaX1tvKDDQ71Y4XYyJenqc62bECn8QJgwNAVe",
+    "num_edges": 0,
+    "num_nodes": 3,
+    "num_partitions": 1,
+    "queries": {
+        "export": {
+            "outcome": "pass",
+            "time": 4801
+        },
+        "import": {
+            "outcome": "pass",
+            "time": 136768
+        }
+    },
+    "status": "pass",
+    "version": "0.11.0+20230426T154903Z.196bb7b93.dev",
+    "provider": "gcp",
+    "compute_node_machine_type": "n2-highmem-32",
+    "artifact_id": "0.11.0+20230426T154903Z.196bb7b93",
+    "cluster": "katana-tools-users-bhargavi-rdg7",
+    "deployment": "kubernetes",
+    "katana_tools_sha": "09010fc1413353adf8b3cd52bdda5e7ab102211e",
+    "katana_date": "2023-04-26 15:49:03",
+    "katana_branch": "master",
+    "katana_sha": "196bb7b9353d36d11a80cf1e593bd53111e22857",
+    "katana_deploy_sha": "0.6.0-20230329T173412Z.2076520",
+    "compute_node_env": "Unknown"
+}
